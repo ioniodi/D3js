@@ -100,7 +100,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-	.on("click", clickme);
+	//.on("click", clickme);
 	
 	
 
