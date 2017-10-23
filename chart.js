@@ -41,9 +41,9 @@ var tooltip = d3.select("#chart")
 
 var comma = d3.format(",.0f");
 
-function clickme(){
-	window.open("http://www.google.com/search?q="+d.donor, '_blank');
-}
+//function clickme(){
+//	window.open("http://www.google.com/search?q="+d.donor, '_blank');
+//}
 
 function transition(name) {
 	if (name === "all-donations") {
