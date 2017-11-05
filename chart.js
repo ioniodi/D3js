@@ -77,6 +77,12 @@ function transition(name) {
 		return fundsType();
 	}
 
+$('#link').click(function () {
+
+     window.open('http://www.google.com','mywindow','width=400,height=200')
+
+});
+
 function start() {
 
 	node = nodeGroup.selectAll("circle")
