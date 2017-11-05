@@ -19,9 +19,10 @@ var entityCentres = {
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
 		individual: {x: w / 3.65, y: h / 3.3},
-	};
+	}; 
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+//var fill = d3.scale.ordinal().range(["#04771D", "#cfcd29", "#501208"]);
+var fill = d3.scale.ordinal().range(["#cfcd29", "#04771D", "#501208"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -92,7 +93,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
