@@ -77,12 +77,6 @@ function transition(name) {
 		return fundsType();
 	}
 
-$('#link').click(function () {
-
-     window.open('http://www.google.com','mywindow','width=400,height=200')
-
-});
-
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -99,7 +93,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor,'width=400,height=200');});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
