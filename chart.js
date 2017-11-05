@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#FF7F50", "#008B8B", "#8B008B"]); //Coral,DarkCyan,DarkMagenta
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -106,6 +106,11 @@ function start() {
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
+}
+
+function openInNewTab(www.google.com) {
+  var win = window.open(www.google.com, '_blank');
+  win.focus();
 }
 
 function total() {
