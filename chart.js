@@ -108,11 +108,6 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-function openInNewTab(www.google.com) {
-  var win = window.open(www.google.com, '_blank');
-  win.focus();
-}
-
 function total() {
 
 	force.gravity(0)
