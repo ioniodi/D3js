@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#006400", "#fdff00", "#e71212"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -76,6 +76,7 @@ function transition(name) {
 		return fundsType();
 	}
 
+
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -92,11 +93,15 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
+		//
 
+ 
+	
 		force.gravity(0)
 			.friction(0.75)
 			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
@@ -338,6 +343,8 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
+
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
