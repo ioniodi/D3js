@@ -344,6 +344,18 @@ function mouseout() {
 			.style("display", "none");
 		}
 
+$(document).ready(function() {
+  var oldSize = parseFloat($("#text/javascript").css('font-size'));
+  var newSize = oldSize  * 2;
+  $("#text/javascript").hover(
+    function() {
+     $("#text/javascript").animate({ fontSize: newSize}, 200);
+    },
+    function() {
+    $("#text/javascript").animate({ fontSize: oldSize}, 200);
+   }
+ );
+});
 
 
 $(document).ready(function() {
