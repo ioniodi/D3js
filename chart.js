@@ -344,7 +344,7 @@ function mouseout() {
 			.style("display", "none");
 		}
 
-$("selector").hover(function(){
+$(document).hover(function(){
    $(this).animate({fontSize: "22"}, 300);
 }, function() {
   $(this).animate({fontSize: "16"}, 300);  
