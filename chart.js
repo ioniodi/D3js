@@ -344,18 +344,6 @@ function mouseout() {
 			.style("display", "none");
 		}
 
-$(document).ready(function() {
-  var oldSize = parseFloat($("#annotations").css('font-size'));
-  var newSize = oldSize  * 2;
-  $("#annotations).hover(
-    function() {
-     $("#annotations").animate({ fontSize: newSize}, 200);
-    },
-    function() {
-    $("#annotations").animate({ fontSize: oldSize}, 200);
-   }
- );
-});
 
 
 $(document).ready(function() {
