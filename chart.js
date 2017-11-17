@@ -345,6 +345,20 @@ function mouseout() {
 		}
 
 $(document).ready(function() {
+  var oldSize = parseFloat($("#annotations").css('font-size'));
+  var newSize = oldSize  * 2;
+  $("#annotations).hover(
+    function() {
+     $("#annotations").animate({ fontSize: newSize}, 200);
+    },
+    function() {
+    $("#annotations").animate({ fontSize: oldSize}, 200);
+   }
+ );
+});
+
+
+$(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
       return transition(id);
