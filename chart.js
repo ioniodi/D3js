@@ -344,11 +344,7 @@ function mouseout() {
 			.style("display", "none");
 		}
 
-$(document).hover(function(){
-   $(this).animate({fontSize: "22"}, 300);
-}, function() {
-  $(this).animate({fontSize: "16"}, 300);  
-})
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
