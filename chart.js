@@ -324,6 +324,10 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	
+	
+	var talking = new SpeechSynthesisUtterance("My name is " + donor + " and i have donated " + amount + " british pounds");
+	window.speechSynthesis.speak(msg);    
 
 
 	mosie.classed("active", true);
@@ -333,8 +337,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	var talking = new SpeechSynthesisUtterance("My name is " + donor + " and i have donated " + amount + " british pounds");
-	window.speechSynthesis.speak(msg);
+	
 	}
 
 function mouseout() {
