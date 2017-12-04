@@ -332,9 +332,13 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+	
+	var talking = new SpeechSynthesisUtterance("My name is " + donor + " and i have donated " + amount + " british pounds");
+	window.speechSynthesis.speak(msg);
 	}
 
 function mouseout() {
+
 	// no more tooltips
 		var mosie = d3.select(this);
 
@@ -342,6 +346,8 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	        
+	        window.speechSynthesis.cancel();
 		}
 
 
