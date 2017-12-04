@@ -327,7 +327,7 @@ function mouseover(d, i) {
 	
 	
 	var talking = new SpeechSynthesisUtterance("My name is " + donor + " and i have donated " + amount + " british pounds");
-	window.speechSynthesis.speak(msg);    
+	window.speechSynthesis.speak(talking);     // text to speech 
 
 
 	mosie.classed("active", true);
