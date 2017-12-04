@@ -37,7 +37,24 @@
     </script>
 </head>
 <!-- Add feature detection and noscript -->
+    
+<style type="text/css">
 
+.zoom {
+   -webkit-transition: all .3s ease-out;
+   -moz-transition: all .3s ease-out;
+   -o-transition: all .3s ease-out;
+   transition: all .3s ease-out;
+}
+.zoom:hover {
+   -moz-transform: scale(2);
+   -webkit-transform: scale(2);
+   -o-transform: scale(2);
+   transform: scale(2);
+   -ms-transform: scale(2);
+}    
+    
+    
 <body>
 
     <header role="banner" id="title">
