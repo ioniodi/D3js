@@ -160,7 +160,7 @@ function fundsType() {
 		.start();
 }
 		
-function financeType() {
+function amountType() {
 	force.gravity(0)
 	.friction(0.8)
 	.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
@@ -200,7 +200,7 @@ function all(e) {
 }
 
 function amounts(e) {
-	node.each(moveToFinances(e.alpha));
+	node.each(moveToAmounts(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
@@ -276,7 +276,7 @@ function moveToFunds(alpha) {
 	};
 }
 	
-function moveToFinances(alpha) {
+function moveToAmounts(alpha) {
 	return function(d) {
 		if (d.value <= 100000){
 			centreX = svgCentre.x
@@ -349,7 +349,7 @@ function display(data) {
 				y: -y
       };
 			
-      nodes.push(node)
+      nodes.push(node);
 	});
 
 	console.log(nodes);
