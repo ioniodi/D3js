@@ -47,13 +47,17 @@
    transition: all .3s ease-out;
 }
 .zoom:hover {
-    font-weight:bold;
    -moz-transform: scale(1.5);
    -webkit-transform: scale(1.5);
    -o-transform: scale(1.5);
    transform: scale(1.5);
    -ms-transform: scale(1.5);
 }
+    
+.bold:hover{
+    font-weight:bold;
+}    
+    
     
 </style>    
     
@@ -65,13 +69,13 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" onmousedown="button_sound.play()" role="button"  class="pure-button switch" id="all-donations"> <p class=zoom> All money </p> </a>
+            <li><a href="#" onmousedown="button_sound.play()" role="button"  class="pure-button switch" id="all-donations"> <p class=zoom> <h1 class=bold>  All money </p> </a>
             </li>
-            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-money-source"> <p class=zoom> The public's purse </p> </a>
+            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-money-source"> <p class=zoom> <h1 class=bold> The public's purse </p> </a>
             </li>
-            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-party"> <p class=zoom> Split by party </p> </a>
+            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-party"> <p class=zoom> <h1 class=bold> Split by party </p> </a>
             </li>
-            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-donor-type"> <p class=zoom> Split by type of donor </p> </a>
+            <li><a href="#" onmousedown="button_sound.play()" role="button" class="pure-button switch" id="group-by-donor-type"> <p class=zoom> <h1 class=bold> Split by type of donor </p> </a>
             </li>
         </ul>
     </nav>
