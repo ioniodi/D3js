@@ -26,7 +26,7 @@ li {
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type, #view-finance-type {
+#view-party-type, #view-donor-type, #view-source-type, #view-amount-type {
     display: none;
 }
 
@@ -45,8 +45,29 @@ li {
     width: 272px;
 }
 
-#view-finance-type {
+#view-amount-type {
     height: 100%;
+}
+
+#word1 {
+    left: 150px;
+    top: 230px;
+    position: absolute;
+}
+#word2 {
+    left: 425px;
+    top: 265px;
+    position: absolute; 
+}
+#word3 {
+    left: 700px;
+    top: 300px;
+    position: absolute; 
+}
+#word4 {
+    top: 120px;
+    left: 425px;
+    position: absolute;
 }
 
 
