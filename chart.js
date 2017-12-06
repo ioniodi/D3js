@@ -107,7 +107,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo2: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
