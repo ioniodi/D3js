@@ -5,10 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-/*paradoteo2: new variable that gets a sound file*/
-var sound = new Audio("SoundButton.mp3");        
-/*paradoteo2: new variable that gets a url for google search*/
-var GooglePls = "http://www.google.com/search?q=";     
+
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -22,10 +19,9 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
+		individual: {x: w / 3.65, y: h / 3.3}                    
 	};
-/*paradoteo2: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
-var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
+var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38923"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -46,21 +42,17 @@ var tooltip = d3.select("#chart")
 var comma = d3.format(",.0f");
 
 function transition(name) {
-	if (name === "all-donations") {
-		sound.currentTime=0;    /*paradoteo2: start from the beginning*/
-		sound.play();           /*paradoteo2: play the sound.mp3*/
+	if (name === "all-donations") {         
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250); /*Paradoteo3: new amount view*/
+		$("#view-amount-type").fadeOut(250); 
 		return total();
 		//location.reload();
 	}
 	if (name === "group-by-party") {
-		sound.currentTime=0;    /*paradoteo2: start from the beginning*/
-		sound.play();           /*paradoteo2: play the sound.mp3*/
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -70,8 +62,6 @@ function transition(name) {
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
-		sound.currentTime=0;  
-		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
@@ -81,8 +71,6 @@ function transition(name) {
 		return donorType();
 	}
 	if (name === "group-by-money-source"){
-		sound.currentTime=0; 
-		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -91,10 +79,7 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-/*paradoteo3: new slpit by. This block of code makes view-amount-type to appear, while it hides every other view.*/
 	if (name === "group-by-amount"){
-		sound.currentTime=0; 
-		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -139,7 +124,6 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-/*paradoteo3: new function for new split*/
 function amountType() {
 	force.gravity(0)
 		.friction(0.85)
@@ -220,7 +204,7 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
-/*paradoteo 3: New way to split the circles */
+
 
 function moveToAmount(alpha) {
 	return function(d) {
@@ -389,8 +373,8 @@ function mouseover(d, i) {
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 /* Paradoteo 3: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
-	window.speechSynthesis.speak(msg);
+	var talking = new SpeechSynthesisUtterance("My name is" + donor + " and i have donated " + amount + " british pounds");
+	window.speechSynthesis.speak(talking);
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
@@ -402,7 +386,7 @@ function mouseover(d, i) {
 
 function mouseout() {
 	/* no more tooltips */
-/* Paradoteo 3: Cancel the voice if the mouse is no longer over a circle*/	
+	
 		window.speechSynthesis.cancel();
 		var mosie = d3.select(this);
 		mosie.classed("active", false);
