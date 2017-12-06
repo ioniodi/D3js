@@ -276,7 +276,7 @@ function moveToFunds(alpha) {
 	};
 }
 	
-function moveToAmounts(alpha) {
+function moveToAmount(alpha) {
 	return function(d) {
 		if (d.value <= 100000){
 			centreX = svgCentre.x
