@@ -5,6 +5,10 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+/*paradoteo2: new variable that gets a sound file*/
+var sound = new Audio("SoundButton.mp3");        
+/*paradoteo2: new variable that gets a url for google search*/
+var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -18,10 +22,10 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}
+		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
-
-var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38923"]);
+/*paradoteo2: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
+var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -41,19 +45,22 @@ var tooltip = d3.select("#chart")
 
 var comma = d3.format(",.0f");
 
-
 function transition(name) {
 	if (name === "all-donations") {
+		sound.currentTime=0;    /*paradoteo2: start from the beginning*/
+		sound.play();           /*paradoteo2: play the sound.mp3*/
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250); /*Paradoteo3: new amount view*/
 		return total();
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		sound.currentTime=0;    /*paradoteo2: start from the beginning*/
+		sound.play();           /*paradoteo2: play the sound.mp3*/
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -63,6 +70,8 @@ function transition(name) {
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		sound.currentTime=0;  
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
@@ -71,24 +80,30 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source") {
+	if (name === "group-by-money-source"){
+		sound.currentTime=0; 
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-	        $("#view-amount-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	if (name === "group-by-amount") {
+/*paradoteo3: new slpit by. This block of code makes view-amount-type to appear, while it hides every other view.*/
+	if (name === "group-by-amount"){
+		sound.currentTime=0; 
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeIn(1000);
-	        $("#view-amount-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
 		return amountType();
-	
+	}
+}
 
 function start() {
 
@@ -107,13 +122,11 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
+	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo2: When you click, a new windows will pop out at google, searching the donator result  */
+	
 		// Alternative title based 'tooltips'
 		// node.append("title")
-		//	.text(function(d) { return d.donor; });
-	
-	
-	
+		//	.text({ return d.donor; });
 
 		force.gravity(0)
 			.friction(0.75)
@@ -124,6 +137,15 @@ function start() {
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
+}
+
+/*paradoteo3: new function for new split*/
+function amountType() {
+	force.gravity(0)
+		.friction(0.85)
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.on("tick", amounts)
+		.start();
 }
 
 function total() {
@@ -159,15 +181,14 @@ function fundsType() {
 		.on("tick", types)
 		.start();
 }
-		
-function amountType() {
-	force.gravity(0)
-	.friction(0.85)
-	.charge(function(d) { return -Math.pow(d.radius, 2.0) / 2.5; })
-	.on("tick", amounts)
-	.start();
-	
-	
+
+/*paradoteo 3: new function for new split.*/
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -199,14 +220,26 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
-function amounts(e) {
-	node.each(moveToAmounts(e.alpha));
+/*paradoteo 3: New way to split the circles */
 
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+function moveToAmount(alpha) {
+	return function(d) {
+		
+		if (d.value <= 50000) { 
+			centreX = svgCentre.x ;
+			centreY = svgCentre.y -50;
+		} else if (d.value <= 350000) { 
+			centreX = svgCentre.x + 150;
+			centreY = svgCentre.y ;
+		} else if (d.value <= 20000000){ 
+			centreX = svgCentre.x + 300;
+			centreY = svgCentre.y + 50;
+		}
+
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
 }
-	
-	
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -275,25 +308,6 @@ function moveToFunds(alpha) {
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
-	
-function moveToAmount(alpha) {
-	return function(d) {
-		if (d.value <= 100000){
-			centreX = svgCentre.x
-			centreY = svgCentre.y
-		} else if (d.value <= 500000) { 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y + 200;
-		} else if (d.value <= 1000000){ 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y + 400;
-		}
-
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
-}
-	
 
 // Collision detection function by m bostock
 function collide(alpha) {
@@ -342,14 +356,15 @@ function display(data) {
 				donor: d.donor,
 				party: d.party,
 				partyLabel: d.partyname,
-				entity: d.entity,
+			        entity: d.entity,
 				entityLabel: d.entityname,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
-			
-      nodes.push(node);
+
+		
+      nodes.push(node);            /*i put a semicolon*/
 	});
 
 	console.log(nodes);
@@ -373,36 +388,28 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+/* Paradoteo 3: i create a new message that will be narrated, when someone goes over any circle*/
+	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
+	window.speechSynthesis.speak(msg);
 	
-	
-	var talking = new SpeechSynthesisUtterance("My name is " + donor + " and i have donated " + amount + " british pounds");
-	window.speechSynthesis.speak(talking);     // text to speech 
-
-
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+ 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
-	
 	}
 
 function mouseout() {
-
-	// no more tooltips
+	/* no more tooltips */
+/* Paradoteo 3: Cancel the voice if the mouse is no longer over a circle*/	
+		window.speechSynthesis.cancel();
 		var mosie = d3.select(this);
-
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
 			.style("display", "none");
-	        
-	        window.speechSynthesis.cancel();
 		}
-
-
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
@@ -410,7 +417,5 @@ $(document).ready(function() {
       return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
-
+	
 });
-
-
