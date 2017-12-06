@@ -9,7 +9,7 @@ var radius = d3.scale.sqrt().range([10, 20]);
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3	, y: h / 1.8}
+    lib: {x: w / 3, y: h / 1.8}
   };
 
 var entityCentres = { 
@@ -18,7 +18,7 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3},
+		individual: {x: w / 3.65, y: h / 3.3}
 	};
 
 var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38923"]);
@@ -85,9 +85,9 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeIn(250);
-	        $("#view-amount-type").fadeOut(1000);
-		return fundsType();
+		$("#view-source-type").fadeIn(1000);
+	        $("#view-amount-type").fadeOut(250);
+		return amountType();
 	
 
 function start() {
@@ -162,8 +162,8 @@ function fundsType() {
 		
 function amountType() {
 	force.gravity(0)
-	.friction(0.8)
-	.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+	.friction(0.85)
+	.charge(function(d) { return -Math.pow(d.radius, 2.0) / 2.5; })
 	.on("tick", amounts)
 	.start();
 	
