@@ -84,8 +84,8 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeOut(1000);
-		$("#view-amount-type").fadeIn(250);
+		$("#view-source-type").fadeOut(250);  //edoo
+		$("#view-amount-type").fadeIn(1000);
 		return amountType();
 	}
 }
@@ -127,7 +127,7 @@ function start() {
 function amountType() {
 	force.gravity(0)
 		.friction(0.85)
-		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
 		.on("tick", amounts)
 		.start();
 }
@@ -166,7 +166,7 @@ function fundsType() {
 		.start();
 }
 
-/*paradoteo 3: new function for new split.*/
+
 function amounts(e) {
 	node.each(moveToAmount(e.alpha));
 
@@ -216,7 +216,7 @@ function moveToAmount(alpha) {
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
 		} else if (d.value <= 20000000){ 
-			centreX = svgCentre.x + 300;
+			centreX = svgCentre.x ;
 			centreY = svgCentre.y + 50;
 		}
 
@@ -348,7 +348,7 @@ function display(data) {
       };
 
 		
-      nodes.push(node);            /*i put a semicolon*/
+      nodes.push(node);           
 	});
 
 	console.log(nodes);
@@ -372,7 +372,6 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-/* Paradoteo 3: i create a new message that will be narrated, when someone goes over any circle*/
 	var talking = new SpeechSynthesisUtterance("My name is" + donor + " and i have donated " + amount + " british pounds");
 	window.speechSynthesis.speak(talking);
 	
