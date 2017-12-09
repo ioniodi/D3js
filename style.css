@@ -45,22 +45,22 @@ li {
 #view-amount-type {
     height: 100%;
 }
-#amount1 {
+#amount50k {
     left: 150px;
     top: 230px;
     position: absolute;
 }
-#amount2 {
-    left: 425px;
-    top: 265px;
-    position: absolute; 
-}
-#amount3 {
-    left: 700px;
+#amount500k {
+    left: 475px;
     top: 300px;
     position: absolute; 
 }
-#amount4 {
+#amount1mm {
+    left: 700px;
+    top: 400px;
+    position: absolute; 
+}
+#amount {
     top: 120px;
     left: 425px;
     position: absolute;
