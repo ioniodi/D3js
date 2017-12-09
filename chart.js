@@ -6,9 +6,8 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 
-
 var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
+    con: {x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
     lib: {x: w / 3, y: h / 1.8}
   };
@@ -19,9 +18,10 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}                    
+		individual: {x: w / 3.65, y: h / 3.3},
 	};
-var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38924"]);  
+
+var fill = d3.scale.ordinal().range(["#001686", "#FFA792", "#97FF92"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -42,13 +42,13 @@ var tooltip = d3.select("#chart")
 var comma = d3.format(",.0f");
 
 function transition(name) {
-	if (name === "all-donations") {         
+	if (name === "all-donations") {
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250); 
+		$("#view-amount-type").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -70,7 +70,7 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source"){
+	if (name === "group-by-money-source") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -79,17 +79,16 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	if (name === "group-by-amount"){
+	if (name === "group-by-amount") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeOut(250);  //edoo
+		$("#view-source-type").fadeOut(250);
 		$("#view-amount-type").fadeIn(1000);
 		return amount();
 	}
 }
-
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -106,12 +105,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
-	
-		// Alternative title based 'tooltips'
-		// node.append("title")
-		//	.text({ return d.donor; });
+		.on("mouseout", mouseout).on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 
 		force.gravity(0)
 			.friction(0.75)
@@ -123,7 +117,6 @@ function start() {
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
 }
-
 
 function total() {
 
@@ -203,6 +196,8 @@ function amounts(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
+
+
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -291,7 +286,6 @@ function moveToAmount(alpha) {
 	};
 }
 
-
 // Collision detection function by m bostock
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
@@ -339,15 +333,14 @@ function display(data) {
 				donor: d.donor,
 				party: d.party,
 				partyLabel: d.partyname,
-			        entity: d.entity,
+				entity: d.entity,
 				entityLabel: d.entityname,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
-
-		
-      nodes.push(node);           
+			
+      nodes.push(node)
 	});
 
 	console.log(nodes);
@@ -371,22 +364,21 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	var talking = new SpeechSynthesisUtterance("My name is" + donor + " and i have donated " + amount + " british pounds");
-	window.speechSynthesis.speak(talking);
 	
+
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
- 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	}
 
 function mouseout() {
-	/* no more tooltips */
+	// no more tooltips
 	
-		window.speechSynthesis.cancel();
 		var mosie = d3.select(this);
+
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
@@ -399,5 +391,6 @@ $(document).ready(function() {
       return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
-	
+
 });
+
