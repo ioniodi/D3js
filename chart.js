@@ -86,7 +86,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);  //edoo
 		$("#view-amount-type").fadeIn(1000);
-		return amountType();
+		return amount();
 	}
 }
 
@@ -124,13 +124,6 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-function amountType() {
-	force.gravity(0)
-		.friction(0.85)
-		.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
-		.on("tick", amounts)
-		.start();
-}
 
 function total() {
 
@@ -166,12 +159,12 @@ function fundsType() {
 		.start();
 }
 
-
-function amounts(e) {
-	node.each(moveToAmount(e.alpha));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+function amount() {
+	force.gravity(0)
+		.friction(0.75)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 2.5; })
+		.on("tick", amounts)
+		.start();
 }
 
 function parties(e) {
@@ -204,25 +197,11 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
 
-
-function moveToAmount(alpha) {
-	return function(d) {
-		
-		if (d.value <= 50000) { 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y -50;
-		} else if (d.value <= 350000) { 
-			centreX = svgCentre.x + 150;
-			centreY = svgCentre.y ;
-		} else if (d.value <= 20000000){ 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y + 50;
-		}
-
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
 }
 
 function moveToCentre(alpha) {
@@ -292,6 +271,26 @@ function moveToFunds(alpha) {
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
+
+function moveToAmount(alpha) {
+	return function(d) {
+	
+			if (d.value <= 50000) {
+				centreY = svgCentre.x ;
+				centreX = svgCentre.y ;
+			} else if (d.value <= 500000) {
+				centreX = svgCentre.x + 150;
+				centreY = svgCentre.y ;
+			}else if (d.value >= 1000000) {
+				centreX = svgCentre.x + 300;
+				centreY = svgCentre.y ;
+			}
+
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
 
 // Collision detection function by m bostock
 function collide(alpha) {
