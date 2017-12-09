@@ -7,9 +7,7 @@ p {
     margin: 5px 0;
 }
 
-p: hover{
-    text-shadow: 0 0.015em #101010,0 -0.015em #101010,0.01em 0 #101010,-0.01em 0 #101010;
-}
+
 
 strong {
     font-weight: 700;
