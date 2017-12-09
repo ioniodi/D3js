@@ -6,9 +6,15 @@ body {
 p {
     margin: 5px 0;
 }
+
+p: hover{
+    text-shadow: 0 0.015em #101010,0 -0.015em #101010,0.01em 0 #101010,-0.01em 0 #101010;
+}
+
 strong {
     font-weight: 700;
 }
+
 h1, h2, h3, h4, h5 {
     margin: 10px 0 15px 0;
 }
