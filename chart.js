@@ -284,6 +284,7 @@ function moveToAmount(alpha) {
 			}else{
 				centreX = svgCentre.x + 300;
 				centreY = svgCentre.y + 150;
+			}	
 		        
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
