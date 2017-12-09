@@ -5,10 +5,10 @@ var padding = 2;
 var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
-var radius = d3.scale.sqrt().range([10, 20]);
+var radius = d3.scale.sqrt().range([10, 20]);    
 
 var partyCentres = { 
-    con: {x: w / 3, y: h / 3.3}, 
+    con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
     lib: {x: w / 3, y: h / 1.8}
   };
@@ -19,10 +19,10 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3},
+		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
 
-var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38924"]);
+var fill = d3.scale.ordinal().range(["#9B5E51", "#69509B", "#C38924"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -49,7 +49,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250); 
 		return total();
 		//location.reload();
 	}
@@ -71,7 +71,7 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source") {
+	if (name === "group-by-money-source"){
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -80,16 +80,18 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-	if (name === "group-by-amount") {
+
+	if (name === "group-by-amount"){
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeOut(250);
-		$("#view-amount-type").fadeIn(1000);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
 		return amountGroup();
 	}
 }
+
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -100,14 +102,11 @@ function start() {
 		.attr("donor", function(d) { return d.donor; })
 		.attr("entity", function(d) { return d.entity; })
 		.attr("party", function(d) { return d.party; })
-		// disabled because of slow Firefox SVG rendering
-		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
-		//.style("opacity", 0.9)
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
+	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 
 		force.gravity(0)
 			.friction(0.75)
@@ -118,6 +117,15 @@ function start() {
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
+}
+
+
+function amountGroup() {
+	force.gravity(0)
+		.friction(0.85)
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.on("tick", amounts)
+		.start();
 }
 
 function total() {
@@ -154,12 +162,11 @@ function fundsType() {
 		.start();
 }
 
-function amountGroup() {
-	force.gravity(0)
-		.friction(0.75)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 2.5; })
-		.on("tick", amounts)
-		.start();
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
 }
 
 function parties(e) {
@@ -192,14 +199,25 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
-function amounts(e) {
-	node.each(moveToAmount(e.alpha));
 
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
+function moveToAmount(alpha) {
+	return function(d) {
+		
+		if (d.value <= 50000) { 
+			centreX = svgCentre.x ;
+			centreY = svgCentre.y -50;
+		} else if (d.value <= 500000) { 
+			centreX = svgCentre.x + 150;
+			centreY = svgCentre.y ;
+		} else if (d.value <= 20000000){ 
+			centreX = svgCentre.x + 300;
+			centreY = svgCentre.y + 50;
+		}
+
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
 }
-
-
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -269,24 +287,6 @@ function moveToFunds(alpha) {
 	};
 }
 
-function moveToAmount(alpha) {
-	return function(d) {
-		
-		if (d.value <= 50000) { 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y -50;
-		} else if (d.value <= 350000) { 
-			centreX = svgCentre.x + 150;
-			centreY = svgCentre.y ;
-		} else if (d.value <= 20000000){ 
-			centreX = svgCentre.x + 300;
-			centreY = svgCentre.y + 50;
-		}
-
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
-
 // Collision detection function by m bostock
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
@@ -334,14 +334,15 @@ function display(data) {
 				donor: d.donor,
 				party: d.party,
 				partyLabel: d.partyname,
-				entity: d.entity,
+			        entity: d.entity,
 				entityLabel: d.entityname,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
-			
-      nodes.push(node)
+
+		
+      nodes.push(node);            /*i put a semicolon*/
 	});
 
 	console.log(nodes);
@@ -365,24 +366,22 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
-        var talking = new SpeechSynthesisUtterance("My name is" + donor + " and i have donated " + amount + " british pounds");
-        window.speechSynthesis.speak(talking);
 
+	var msg = new SpeechSynthesisUtterance("My name is " + donor + " and I have donated " + amount + " british pounds");
+	window.speechSynthesis.speak(msg);
+	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+ 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	}
 
 function mouseout() {
-	// no more tooltips
-	        
-	        window.speechSynthesis.cancel();
+		
+		window.speechSynthesis.cancel();
 		var mosie = d3.select(this);
-
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
@@ -395,6 +394,5 @@ $(document).ready(function() {
       return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
-
+	
 });
-
