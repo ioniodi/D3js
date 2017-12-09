@@ -41,25 +41,26 @@ li {
     left: 650px;
     width: 272px;
 }
+
 #view-amount-type {
     height: 100%;
 }
-#word1 {
+#amount1 {
     left: 150px;
     top: 230px;
     position: absolute;
 }
-#word2 {
+#amount2 {
     left: 425px;
     top: 265px;
     position: absolute; 
 }
-#word3 {
+#amount3 {
     left: 700px;
     top: 300px;
     position: absolute; 
 }
-#word4 {
+#amount4 {
     top: 120px;
     left: 425px;
     position: absolute;
