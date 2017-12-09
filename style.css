@@ -43,22 +43,22 @@ li {
 #view-amount-type {
     height: 100%;
 }
-#amount50k {
+#sentence2 {
     left: 150px;
     top: 230px;
     position: absolute;
 }
-#amount500k {
+#sentence3 {
     left: 475px;
-    top: 300px;
+    top: 230px;
     position: absolute; 
 }
-#amount1mm {
+#sentence4 {
     left: 700px;
-    top: 400px;
+    top: 230px;
     position: absolute; 
 }
-#amount {
+#sentence1 {
     top: 120px;
     left: 425px;
     position: absolute;
