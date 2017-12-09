@@ -281,7 +281,7 @@ function moveToAmount(alpha) {
 				centreX = svgCentre.x + 300;
 				centreY = svgCentre.y ;
 			}else if (d.value <= 1000000) {
-				centreX = svgCentre.x + 300;
+				centreX = svgCentre.x + 600;
 				centreY = svgCentre.y ;
 			}	
 		   
