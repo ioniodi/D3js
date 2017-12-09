@@ -86,7 +86,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-amount-type").fadeIn(1000);
-		return amount();
+		return amountGroup();
 	}
 }
 function start() {
@@ -105,8 +105,9 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout).on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
-
+		.on("mouseout", mouseout)
+	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
+	
 		force.gravity(0)
 			.friction(0.75)
 			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
@@ -152,7 +153,7 @@ function fundsType() {
 		.start();
 }
 
-function amount() {
+function amountGroup() {
 	force.gravity(0)
 		.friction(0.75)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 2.5; })
@@ -273,13 +274,17 @@ function moveToAmount(alpha) {
 			if (d.value <= 50000) {
 				centreY = svgCentre.x ;
 				centreX = svgCentre.y ;
-			} else if (d.value <= 500000) {
+			} else if (d.value <= 100000) {
 				centreX = svgCentre.x + 150;
 				centreY = svgCentre.y ;
-			}else if (d.value >= 1000000) {
+			}else if (d.value <= 500000) {
 				centreX = svgCentre.x + 300;
 				centreY = svgCentre.y ;
-			}
+			}else if (d.value <= 1000000) {
+				centreX = svgCentre.x + 300;
+				centreY = svgCentre.y ;
+			}	
+		   
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
