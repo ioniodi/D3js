@@ -365,7 +365,9 @@ function mouseover(d, i) {
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
-
+        var talking = new SpeechSynthesisUtterance("My name is" + donor + " and i have donated " + amount + " british pounds");
+        window.speechSynthesis.speak(talking);
+	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
