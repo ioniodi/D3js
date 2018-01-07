@@ -1,1 +1,1 @@
-<!-- markdown-exec(cmd:echo '123') --><!-- /markdown-exec -->
+<!-- markdown-exec(cmd:git status) --><!-- /markdown-exec -->
