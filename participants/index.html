@@ -6,9 +6,12 @@
 <body onload="brython()">
     
 <script type="text/python">
-    
+
+import time
+   
 from browser import document
-document['zone'] <= "blah"
+fake_qs = '?foo=%s' %time.time()
+document['zone'].value <= open('file.txt'+fake_qs).read() 
     
     </script>
 
