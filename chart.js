@@ -315,7 +315,7 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	var imgURL = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/' + 'qwerty' + '.png';
+	var imgURL = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/' + donor + '.png';
 	
 	var image = new Image();
 
@@ -334,7 +334,7 @@ function mouseover(d, i) {
 
 	image.src = imgURL;
 	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imgURL + "' height='42' width='42'></span></p>" 	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + image.src + "' height='42' width='42'></span></p>" 	
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
@@ -342,7 +342,7 @@ function mouseover(d, i) {
 
 	
 	tooltip.append("img")
-                    .attr("src",imgURL)
+                    .attr("src",image.src)
                     .attr("x", 800)
                     .attr("y", 800)
                     .attr("width","142px")                  
