@@ -343,8 +343,8 @@ function mouseover(d, i) {
 	
 	tooltip.append("img")
                     .attr("src",image.src)
-                    .attr("x", 800)
-                    .attr("y", 800)
+                    .attr("x", 1050)
+                    .attr("y", 950)
                     .attr("width","142px")                  
                     .attr("height","142px"); 
             tooltip.style("visibility", "visible");
