@@ -342,7 +342,7 @@ function mouseover(d, i) {
 
 	
 	tooltip.append("img")
-                    .attr("src","https://github.com/favicon.ico")
+                    .attr("src",imgURL)
                     .attr("x", 800)
                     .attr("y", 800)
                     .attr("width","142px")                  
