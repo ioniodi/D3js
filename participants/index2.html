@@ -4,12 +4,22 @@
 </head>
 <body onload="brython()">
 <script type="text/python">
-from browser import document, alert
+from browser import document
+from browser.html import TABLE, TR, TH, TD
 
-# bind event 'click' on button to function echo
-@document["mybutton"].bind("click")
-def echo(ev):
-    alert(document["zone"].value)
+@document['button7'].bind('click')
+def insert_table(event):
+    table = TABLE()
+
+    # header row
+    table <= TR(TH(f'Column {i}') for i in range(5))
+
+    # table rows
+    for row in range(3):
+        table <= TR(TD(f'Cell {row}-{i}') for i in range(5))
+
+    document["zone7"].clear()
+    document["zone7"] <= table
 
 </script>
 <input id="zone">
