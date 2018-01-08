@@ -315,20 +315,10 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	var infoBox = "<p> Source: <b>" + donor + "</b>"
 	var imgURL = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/' + donor + '.png';
+	var infoBox = "<p> Source: <b>" + donor + "</b>" +  "<img src='" + imgURL + "' height='42' width='42'></p>" 	
 	
-	$.get(imgURL)
-    .done(function() { 
-        infoBox = infoBox + " <img src='" + imgURL + "'+ " height='42' width='42'></p>"
-
-    }).fail(function() { 
-         infoBox = infoBox + "</p>"
-
-    })
-	
-	
-					      infoBox = infoBox + "<p> Recipient: <b>" + party + "</b></p>"
+	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 
