@@ -320,10 +320,10 @@ function mouseover(d, i) {
 	
 	$.get(imgURL)
     .done(function() { 
-        infoBox = infoBox + " <img src='" + imgURL + "'+ " height='42' width='42'></p>";
+        infoBox = infoBox + " <img src='" + imgURL + "'+ " height='42' width='42'></p>"
 
     }).fail(function() { 
-         infoBox = infoBox + "</p>";
+         infoBox = infoBox + "</p>"
 
     })
 	
