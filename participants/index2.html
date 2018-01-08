@@ -1,12 +1,21 @@
-
 <html>
-<head>
-<script src="/brython.js"></script>
-</head>
-<body onload="brython()">
-    
-<script type="text/python" src="main.py"></script>
-                                       
 
-</body>
-</html>
+        <head>
+            <script type="text/javascript" src="/path/to/brython.js"></script>
+        </head>
+
+        <body onload="brython()">
+
+            <script type="text/python">
+            from browser import document, alert
+
+            @document["mybutton"].bind("click")
+            def echo(event):
+                alert(document["zone"].value)
+            </script>
+
+            <input id="zone"><button id="mybutton">click !</button>
+
+        </body>
+
+    </html>
