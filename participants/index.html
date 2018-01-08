@@ -7,10 +7,11 @@
     
 <script type="text/python">
 
-
+import urllib.request
+local_filename, headers = urllib.request.urlretrieve('https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/file.txt')
+html = open(local_filename)
    
-from browser import document
-document['zone'].value <= open('https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/file.txt').read() 
+document['zone'].value <= html
     
     </script>
 
