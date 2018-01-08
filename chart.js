@@ -316,12 +316,33 @@ function mouseover(d, i) {
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
 	var imgURL = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/' + donor + '.png';
-	var infoBox = "<p> Source: <b>" + donor + "</b>" +  "<img src='" + imgURL + "' height='42' width='42'></p>" 	
+	
+	var image = new Image();
+
+	image.onload = function() {
+    	// image exists and is loaded
+    	document.body.appendChild(image);
+	}
+	image.onerror = function() {
+    	// image did not load
+
+    	var err = new Image();
+    	err.src = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/error.png';
+
+    	document.body.appendChild(err);
+	}
+
+	image.src = imgURL;
+	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<img src='" + imgURL + "' height='42' width='42'></p>" 	
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 
+	
+	
+	
 
 	mosie.classed("active", true);
 	d3.select(".tooltip")
