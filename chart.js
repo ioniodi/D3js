@@ -334,7 +334,7 @@ function mouseover(d, i) {
 
 	image.src = imgURL;
 	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<img src='" + imgURL + "' height='42' width='42'></p>" 	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imgURL + "' height='42' width='42'></span></p>" 	
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
