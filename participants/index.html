@@ -1,13 +1,10 @@
 <html>
-
 <head>
 <script src="/brython.js"></script>
 </head>
-
 <body onload="brython()">
 <script type="text/python">
-  
-  from browser import document
+from browser import document
 from browser.html import TABLE, TR, TH, TD
 
 @document['button7'].bind('click')
@@ -23,9 +20,9 @@ def insert_table(event):
 
     document["zone7"].clear()
     document["zone7"] <= table
-  
-  </script>
 
+</script>
+<input id="zone">
+<button id="button7">click !</button>
 </body>
-
 </html>
