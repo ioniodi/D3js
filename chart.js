@@ -315,8 +315,7 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	var infoBox = "<p><img src='https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/qwerty.png' height='42' width='42'></p>"
-	   + "<p> Source: <b>" + donor + "</b></p>"
+	var infoBox = "<p> Source: <b>" + donor + "</b> <img src='https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/qwerty.png' height='42' width='42'></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
