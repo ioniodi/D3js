@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 
         <head>
-            <script type="text/javascript" src="/path/to/brython.js"></script>
+           
         </head>
 
-        <body onload="brython()">
+        <body>
 
-            <script type="text/python">
-            from browser import document, alert
+                <script>
+                
+                        var oRequest = new XMLHttpRequest();
+var sURL = "https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/file.txt";
 
-            @document["mybutton"].bind("click")
-            def echo(event):
-                alert(document["zone"].value)
-            </script>
+oRequest.open("GET",sURL,false);
+oRequest.setRequestHeader("User-Agent",navigator.userAgent);
+oRequest.send(null)
 
-            <input id="zone"><button id="mybutton">click !</button>
+if (oRequest.status==200) alert(oRequest.responseText);
+else alert("Error executing XMLHttpRequest call!");
+                
+                
+                </script>
+
+ <div id="zone">Συμμετέχοντες: <br></div>    
+
+
 
         </body>
 
