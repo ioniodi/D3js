@@ -8,8 +8,8 @@
 <script type="text/python">
 
 import urllib.request
-local_filename, headers = urllib.request.urlretrieve('https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/file.txt')
-html = open(local_filename)
+with urllib.request.urlopen('https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/file.txt') as response:
+   html = response.read()
    
 document['zone'].value <= html
     
