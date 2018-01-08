@@ -341,7 +341,13 @@ function mouseover(d, i) {
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 
 	
-	
+	tooltip.append("img")
+                    .attr("src","https://github.com/favicon.ico")
+                    .attr("x", -8)
+                    .attr("y", -8)
+                    .attr("width","42px")                  
+                    .attr("height","42px"); 
+            tooltip.style("visibility", "visible");
 	
 
 	mosie.classed("active", true);
