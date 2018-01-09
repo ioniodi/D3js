@@ -323,14 +323,6 @@ function mouseover(d, i) {
 						+ "<p> Type of donor: <b>" + entity + "</b></p>"
 						+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
-	tooltip.append("img")
-                    .attr("src",imageFile)
-                    .attr("x", 1050)
-                    .attr("y", 950)
-                    .attr("width","42px")                  
-                    .attr("height","42px"); 
-            tooltip.style("visibility", "visible");
-	
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
