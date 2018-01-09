@@ -373,7 +373,7 @@ function mouseover(d, i) {
                     .attr("height","142px"); 
             tooltip.style("visibility", "visible");
 	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + document.getElementById("image").src + "' height='42' width='42'></span></p>" 	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + document.getElementById("img").src + "' height='42' width='42'></span></p>" 	
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
