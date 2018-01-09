@@ -321,8 +321,7 @@ function mouseover(d, i) {
 	
 	image.onload = function() {
     	// image exists and is loaded
-    	//document.body.appendChild(image);
-	image.src = imgURL + donor + ".ico";	
+    	document.body.appendChild(image);
 	}
 	image.onerror = function() {
     	// image did not load
