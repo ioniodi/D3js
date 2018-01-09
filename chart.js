@@ -315,7 +315,6 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	var imgURL = 'https://raw.githubusercontent.com/Rakoon12/D3js-uk-political-donations/master/photos/';
 	
 	var image = new Image();
 	
@@ -332,7 +331,7 @@ function mouseover(d, i) {
     	document.body.appendChild(err);
 	}
 	
-	//image.src = imgURL + donor + ".ico";
+	image.src = "https://raw.githubusercontent.com/Rakoon12/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + image.src + "' height='42' width='42'></span></p>" 	
 	
