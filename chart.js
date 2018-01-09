@@ -319,10 +319,10 @@ function mouseover(d, i) {
 	
 	var image = new Image();
 
-	image.onload = function() {
+	//image.onload = function() {
     	// image exists and is loaded
-    	document.body.appendChild(image);
-	}
+    	//document.body.appendChild(image);
+	//}
 	image.onerror = function() {
     	// image did not load
 
