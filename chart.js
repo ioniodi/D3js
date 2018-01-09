@@ -319,7 +319,7 @@ function mouseover(d, i) {
 	
 	var image = new Image();
 	
-	image.onload = function(donor) {
+	image.onload = function() {
     	// image exists and is loaded
     	//document.body.appendChild(image);
 	image.src = imgURL + donor + ".ico";	
