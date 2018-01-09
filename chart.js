@@ -369,8 +369,8 @@ function mouseover(d, i) {
                     .attr("src",imageFile)
                     .attr("x", 1050)
                     .attr("y", 950)
-                    .attr("width","142px")                  
-                    .attr("height","142px"); 
+                    .attr("width","42px")                  
+                    .attr("height","42px"); 
             tooltip.style("visibility", "visible");
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42'></span></p>" 	
