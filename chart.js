@@ -355,7 +355,7 @@ function mouseover(d, i) {
 	}
 	else {
 	// image does not exist
-		var imageFile = 'https://github.com/favicon.ico';
+	imageFile = 'https://github.com/favicon.ico';
 	}
 	});
 	
