@@ -315,7 +315,7 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	var imgURL = 'https://github.com/Rakoon12/D3js-uk-political-donations/tree/master/photos/' + donor + '.png';
+	var imgURL = 'https://github.com/favicon.ico';
 	
 	var image = new Image();
 
