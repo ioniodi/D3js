@@ -319,9 +319,10 @@ function mouseover(d, i) {
 	
 	var image = new Image();
 	
-	image.onload = function() {
-    	 image exists and is loaded
-    	document.body.appendChild(image);
+	image.onload = function(donor) {
+    	// image exists and is loaded
+    	//document.body.appendChild(image);
+	image.src = imgURL + donor + ".ico";	
 	}
 	image.onerror = function() {
     	// image did not load
@@ -332,7 +333,7 @@ function mouseover(d, i) {
     	document.body.appendChild(err);
 	}
 	
-	image.src = imgURL + donor + ".ico";
+	//image.src = imgURL + donor + ".ico";
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + image.src + "' height='42' width='42'></span></p>" 	
 	
