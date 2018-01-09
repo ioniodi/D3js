@@ -318,8 +318,6 @@ function mouseover(d, i) {
 	var imgURL = 'https://raw.githubusercontent.com/Rakoon12/D3js-uk-political-donations/master/photos/';
 	
 	var image = new Image();
-
-	image.src = imgURL + donor + ".ico";
 	
 	image.onload = function() {
     	 image exists and is loaded
@@ -333,6 +331,8 @@ function mouseover(d, i) {
 
     	document.body.appendChild(err);
 	}
+	
+	image.src = imgURL + donor + ".ico";
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + image.src + "' height='42' width='42'></span></p>" 	
 	
