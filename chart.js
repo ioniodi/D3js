@@ -362,11 +362,7 @@ function mouseover(d, i) {
 	// *******************************************
 	
 	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42'></span></p>" 	
 	
-	 							+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 
 	
 	tooltip.append("img")
@@ -384,6 +380,13 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+	
+	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42'></span></p>" 	
+	
+	 							+ "<p> Recipient: <b>" + party + "</b></p>"
+								+ "<p> Type of donor: <b>" + entity + "</b></p>"
+								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	
 	}
 
 function mouseout() {
