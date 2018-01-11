@@ -1,5 +1,5 @@
 # Οπτικοποίηση δεδομένων χορηγιών (UK)
-test
+
 Πηγή: [https://github.com/neilhawkins/d3-uk-political-donations](https://github.com/neilhawkins/d3-uk-political-donations)
 
 ## Προετοιμασία
@@ -20,4 +20,3 @@ test
 * [jQuery](https://jquery.com/)
 * [Ελληνική Στατιστική Αρχή](http://www.statistics.gr/)
 * [Eurostat](http://ec.europa.eu/eurostat/)
-* test
