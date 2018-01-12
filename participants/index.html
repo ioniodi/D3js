@@ -16,7 +16,7 @@
   <!-- ///////////////////////////////////////////////////////////////////////// -->
   <!-- //////////////////////// Position #1 starting... //////////////////////// -->
   <!-- ///////////////////////////////////////////////////////////////////////// -->
-  <div class="boxed">
+  <div style="border: 2px solid; border-radius: 5px;">
       <h4 style="background-color: #e5e5e5;">
         <img src="https://avatars3.githubusercontent.com/u/19952914?s=400&v=4" height="42" width="42">  
         <span class="ml1"><span class="letters">DiogenisAl</span></span>
@@ -28,12 +28,7 @@ $('.ml1 .letters').each(function(){
   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
 });
    
-   ml.timelines["ml1"] = anime.timeline({loop: true})
-  
-  .boxed {
-    border: 2px solid;
-    border-radius: 5px;
-  }   
+   ml.timelines["ml1"] = anime.timeline({loop: true}) 
   .add({
     targets: '.ml1 .letter',
     scale: [0.3,1],
