@@ -1,4 +1,3 @@
-<script>
 // Wrap every letter in a span
 $('.ml1 .letters').each(function(){
   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
@@ -32,4 +31,3 @@ ml.timelines["ml1"] = anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 1000
   });
-</script>
