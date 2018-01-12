@@ -27,14 +27,16 @@
 $('.ml1 .letters').each(function(){
   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
 });
-  </script>
-  <style>
-.boxed {
-  border: 2px solid;
-  border-radius: 5px;
-}   
    
-ml.timelines["ml1"] = anime.timeline({loop: true})
+   ml.timelines["ml1"] = anime.timeline({loop: true})
+  </script>
+  
+  
+  <style>
+  .boxed {
+    border: 2px solid;
+    border-radius: 5px;
+  }   
   .add({
     targets: '.ml1 .letter',
     scale: [0.3,1],
