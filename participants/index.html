@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>6</title>
+  <title>7</title>
   
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   
-  <script src="https://github.com/Rakoon12/D3js-uk-political-donations/blob/master/participants/anime.min.js"></script>
-  
   <script>var ml = { timelines: {}};</script>
 
 </head>
 <body>
-  
+
+  <div class="row clearfix">
+    
+
   <!-- ///////////////////////////////////////////////////////////////////////// -->
   <!-- //////////////////////// Position #1 starting... //////////////////////// -->
   <!-- ///////////////////////////////////////////////////////////////////////// -->
   
-  <div class="moving-letters">
+  <div id="std1" class="moving-letters">
     <h1 class="ml1">
   <span class="text-wrapper">
     <span class="line line1"></span>
@@ -77,7 +78,7 @@ ml.timelines["ml1"] = anime.timeline({loop: true})
  <!-- ///////////////////////////////////////////////////////////////////////// -->  
   
 
-<div id="lineDrawing"> <svg viewBox="0 0 280 100">
+<div id="std2"> <svg viewBox="0 0 280 100">
       <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1" class="lines">
         <path d="M58 80V50.12C57.7 41.6 51.14 35 43 35a15 15 0 0 0 0 30h7.5v15H43a30 30 0 1 1 0-60c16.42 0 29.5 13.23 30 29.89V80H58z" stroke-dasharray="316.85528564453125" style="stroke-dashoffset: 316.855px;"></path>
         <path d="M73 80V20H58v60h15z" stroke-dasharray="150" style="stroke-dashoffset: 150px;"></path>
@@ -87,26 +88,28 @@ ml.timelines["ml1"] = anime.timeline({loop: true})
         <path d="M238 65a15 15 0 0 1 0-30c8.1 0 14.63 6.53 15 15h-15v15h30V49.89C267.5 33.23 254.42 20 238 20a30 30 0 0 0 0 60V65z" stroke-dasharray="301.8561706542969" style="stroke-dashoffset: 301.856px;"></path>
         <path d="M260.48 65a7.5 7.5 0 1 1-7.48 8v-1c.26-3.9 3.5-7 7.48-7z" stroke-dasharray="47.128875732421875" style="stroke-dashoffset: 47.1289px;"></path>
       </g>
-    </svg> </div>
+    </svg>
 
 
-<script>
+   <script>
  
-  var lineDrawing = anime({
-  targets: '#lineDrawing .lines path',
-  strokeDashoffset: [anime.setDashoffset, 0],
-  easing: 'easeInOutSine',
-  duration: 1500,
-  delay: function(el, i) { return i * 250 },
-  direction: 'alternate',
-  loop: true
-});
+     var lineDrawing = anime({
+     targets: '#lineDrawing .lines path',
+     strokeDashoffset: [anime.setDashoffset, 0],
+     easing: 'easeInOutSine',
+     duration: 1500,
+     delay: function(el, i) { return i * 250 },
+     direction: 'alternate',
+     loop: true
+   });
   
-</script>  
-
+   </script>  
+ </div>
 <!-- /////////////////////////////////////////////////////////////////////// -->
 <!-- //////////////////////// ...Position #2 ending //////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////// -->  
  
+  </div>  
+    
 </body>
 </html>
