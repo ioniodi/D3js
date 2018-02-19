@@ -45,15 +45,15 @@ li {
 }
 #To25000 {
     left: 150px;
-    top: 150px;
+    top: 10px;
     position: absolute;
 }
 #To55000 {
     left: 425px;
-    top: 170px;
+    top: 20px;
     position: absolute; 
 }
-#To95000 {
+#To85000 {
     left: 150px;
     top: 425px;
     position: absolute; 
