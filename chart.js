@@ -41,8 +41,11 @@ var tooltip = d3.select("#chart")
 
 var comma = d3.format(",.0f");
 
+var sound = new Audio("FB_Messenger_sound.mp3");     
+
 function transition(name) {
 	if (name === "all-donations") {
+		sound.play();
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
@@ -52,6 +55,7 @@ function transition(name) {
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -60,6 +64,7 @@ function transition(name) {
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
@@ -68,6 +73,7 @@ function transition(name) {
 		return donorType();
 	}
 	if (name === "group-by-money-source")
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
