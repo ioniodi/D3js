@@ -350,15 +350,7 @@ function mouseover(d, i) {
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
-			.style("display","block");
-	
-	
-	
-	
-	
-	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>;
-	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
-	
+			.style("display","block");	
 	}
 
 function mouseout() {
