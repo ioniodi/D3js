@@ -90,7 +90,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(1000);
 		$("#view-amount-type").fadeIn(250);
-		return amountType();
+		return fundsType();
 	}
 
 function start() {
