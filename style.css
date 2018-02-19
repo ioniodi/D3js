@@ -26,7 +26,7 @@ li {
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
+#view-party-type, #view-donor-type, #view-source-type,  #view-amount-type {
     display: none;
 }
 
@@ -38,6 +38,30 @@ li {
 #view-party-type {
     left: 650px;
     width: 272px;
+}
+
+#view-amount-type {
+    height: 100%;
+}
+#To25000 {
+    left: 150px;
+    top: 150px;
+    position: absolute;
+}
+#To55000 {
+    left: 425px;
+    top: 150px;
+    position: absolute; 
+}
+#To95000 {
+    left: 150px;
+    top: 425px;
+    position: absolute; 
+}
+#ToInfinite {
+    top: 425px;
+    left: 425px;
+    position: absolute;
 }
 
 /*  Public or private funds view */
