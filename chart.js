@@ -85,7 +85,6 @@ function transition(name) {
 		$("#view-amount-type").fadeIn(250);
 		return fundsType();
 	}
-
 	if (name === "group-by-amount") {
 		sound.play();
 		$("#initial-content").fadeOut(250);
@@ -96,6 +95,7 @@ function transition(name) {
 		$("#view-amount-type").fadeIn(250);
 		return fundsType();
 	}
+}
 
 function start() {
 
