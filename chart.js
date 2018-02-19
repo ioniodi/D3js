@@ -93,7 +93,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(1000);
 		$("#view-amount-type").fadeIn(250);
-		return fundsType();
+		return amountType();
 	}
 }
 
@@ -164,6 +164,14 @@ function fundsType() {
 		.start();
 }
 
+function amountType() {
+	force.gravity(0)
+		.friction(0.75)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", amounts)
+		.start();
+}
+
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -194,6 +202,12 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -258,6 +272,29 @@ function moveToFunds(alpha) {
 			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+
+function moveToAmount(alpha) {
+	return function(d) {
+		
+		if (d.value <= 250000) { 
+			centreX = svgCentre.x ;
+			centreY = svgCentre.y + 50;
+		} else if (d.value <= 550000) { 
+			centreX = svgCentre.x + 350;
+			centreY = svgCentre.y + 50;
+		} else if (d.value <= 950000){ 
+			centreX = svgCentre.x + 60;
+			centreY = svgCentre.y - 350;
+		} else {
+			centreX = svgCentre.x + 360;
+			centreY = svgCentre.y - 360;
+		}
+
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
