@@ -353,6 +353,12 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
+	
+	
+	
+	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
+	
 	}
 
 function mouseout() {
