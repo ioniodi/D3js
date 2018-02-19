@@ -63,15 +63,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: rgb(255, 0, 0);
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: rgb(255, 0, 0);
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: rgb(255, 0, 0);
     top: 550px;
 }
 
@@ -155,13 +155,13 @@ circle.active {
     fill: #F02233;
 }
 .lib {
-    fill: #F02233;
+    fill: #FDBB30;
 }
 .con {
-    fill: #F02233;
+    fill: #087FBD;
 }
 .snp {
-    fill: #F02233;
+    fill: #C9C945;
 }
 /*!
 Pure v0.2.1
