@@ -283,16 +283,16 @@ function moveToAmount(alpha) {
 		
 		if (d.value <= 250000) { 
 			centreX = svgCentre.x ;
-			centreY = svgCentre.y - 150;
+			centreY = svgCentre.y - 250;
 		} else if (d.value <= 550000) { 
 			centreX = svgCentre.x + 350;
-			centreY = svgCentre.y - 160;
+			centreY = svgCentre.y - 260;
 		} else if (d.value <= 850000){ 
 			centreX = svgCentre.x + 60;
-			centreY = svgCentre.y - 350;
+			centreY = svgCentre.y - 450;
 		} else {
 			centreX = svgCentre.x + 360;
-			centreY = svgCentre.y - 360;
+			centreY = svgCentre.y - 460;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
