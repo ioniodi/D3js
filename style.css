@@ -63,15 +63,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgb(255, 0, 0);
+    background: rgb(191, 66, 129);
     top: 110px;
 }
 #labour {
-    background: rgb(255, 0, 0);
+    background: rgb(63, 190, 63);
     top: 330px;
 }
 #libdem {
-    background: rgb(255, 0, 0);
+    background: rgb(101, 36, 36);
     top: 550px;
 }
 
@@ -152,13 +152,13 @@ circle.active {
     margin: 0.2em;
 }
 .lab {
-    fill: #F02233;
+    fill: #C37DB4;
 }
 .lib {
-    fill: #FDBB30;
+    fill: #A3CEA0;
 }
 .con {
-    fill: #087FBD;
+    fill: #A47474;
 }
 .snp {
     fill: #C9C945;
