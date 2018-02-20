@@ -45,33 +45,33 @@ li {
 }
 #To50000 {
     left: 150px;
-    top: 170px;
+    top: 455px;    
     position: absolute;
 }
 #To100000 {
     left: 425px;
-    top: 170px;
-    position: absolute; 
+    top: 455px;
+    position: absolute;
 }
 #To500000 {
     left: 700px;
-    top: 170px;
-    position: absolute; 
+    top: 455px;
+    position: absolute;
 }
 #To1000000 {
     left: 150px;
-    top: 455px;    
-    position: absolute;
+    top: 170px;
+    position: absolute;    
 }
 #To5000000 {
     left: 425px;
-    top: 455px;
-    position: absolute;
+    top: 170px;
+    position: absolute; 
 }
-#To20000000 {
+#To20000000 {    
     left: 700px;
-    top: 455px;
-    position: absolute;
+    top: 170px;
+    position: absolute;    
 }
 
 /*  Public or private funds view */
