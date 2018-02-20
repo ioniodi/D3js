@@ -60,17 +60,17 @@ li {
 }
 #To1000000 {
     left: 150px;
-    top: 170px;
+    top: 100px;
     position: absolute;    
 }
 #To5000000 {
     left: 425px;
-    top: 170px;
+    top: 100px;
     position: absolute; 
 }
 #To20000000 {    
     left: 700px;
-    top: 170px;
+    top: 100px;
     position: absolute;    
 }
 
