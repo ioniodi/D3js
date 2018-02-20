@@ -45,17 +45,17 @@ li {
 }
 #To50000 {
     left: 150px;
-    top: 495px;    
+    top: 465px;    
     position: absolute;
 }
 #To100000 {
     left: 425px;
-    top: 495px;
+    top: 465px;
     position: absolute;
 }
 #To500000 {
     left: 700px;
-    top: 495px;
+    top: 465px;
     position: absolute;
 }
 #To1000000 {
@@ -113,8 +113,7 @@ li {
 #view-donor-type {
     height: 100%;
     left: 500px;
-    width: 370px;
-    
+    width: 370px;    
 }
 #individual {
     top: 55px;
