@@ -43,24 +43,34 @@ li {
 #view-amount-type {
     height: 100%;
 }
-#To25000 {
+#To50000 {
     left: 150px;
-    top: 10px;
+    top: 170px;
     position: absolute;
 }
-#To55000 {
+#To100000 {
     left: 425px;
-    top: 20px;
+    top: 170px;
     position: absolute; 
 }
-#To85000 {
+#To500000 {
+    left: 700px;
+    top: 170px;
+    position: absolute; 
+}
+#To1000000 {
     left: 150px;
-    top: 425px;
-    position: absolute; 
+    top: 455px;    
+    position: absolute;
 }
-#ToInfinite {
-    top: 455px;
+#To5000000 {
     left: 425px;
+    top: 455px;
+    position: absolute;
+}
+#To20000000 {
+    left: 700px;
+    top: 455px;
     position: absolute;
 }
 
