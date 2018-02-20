@@ -392,9 +392,7 @@ function mouseover(d, i) {
 	
 	
 	
-
-	
-
+	responsiveVoice.speak("The donator " + donor + " gave an amount of " + amount + " british pounds");
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
 	
