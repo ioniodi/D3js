@@ -307,6 +307,14 @@ function display(data) {
 	return start();
 }
 
+
+function onClick(d){
+	var donor = d.donor;
+	url ='http://www.google.com/search?q=' + donor;
+    	window.open(url,'_blank');	
+}
+
+
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
