@@ -36,17 +36,28 @@
 <body>
 
     <header role="banner" id="title">
+
+        <!-- ADDING AUDIO ID TAG -->
+        <audio id="button" src="buttonSound.mp3" preload="auto"></audio>
+
         <h1>Who's funding the big three?</h1>
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" role="button" class="pure-button switch" id="all-donations"
+                onclick = "document.getElementById('button').play();">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source"
+                onclick = "document.getElementById('button').play();">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-party"
+                onclick = "document.getElementById('button').play();">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type"
+                onclick = "document.getElementById('button').play();">Split by type of donor</a>
+            </li>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount"
+            onclick = "document.getElementById('button').play();" >Split by amount</a>
             </li>
         </ul>
     </nav>
@@ -198,10 +209,67 @@
                         </p>
             </div>
         </div>
+
+        <div id = "view-by-amount">
+         <div id="enormous">
+                <h5><strong><strong>15</strong> Enormous donations</strong></h5>
+               
+                    
+                        <pre>Being: <strong>0.33%</strong> to Conservative 
+       <strong>0.60%</strong> to Labour
+       <strong>0.07%</strong> to Liberal
+                        </pre>
+        <div id="huge">
+                <h5><strong><strong>126</strong> Huge donations</strong></h5>
+               
+                        <pre>Being: <strong>0.75%</strong> to Conservative 
+       <strong>0.13%</strong> to Labour
+       <strong>0.12%</strong> to Liberal
+                        </pre>
+         </div>
+        
+         
+         <div id="large">
+               <h5><strong><strong>100</strong> Large donations</strong></h5>
+               
+                        <pre>Being: <strong>0.80%</strong> to Conservative 
+       <strong>0.13%</strong> to Labour
+       <strong>0.07%</strong> to Liberal
+                        </pre>
+         </div>
+        
+         
+         <div id="normal">
+                <h5><strong><strong>159</strong> Normal donations</strong></h5>
+               
+                        <pre>Being: <strong>0.69%</strong> to Conservative 
+       <strong>0.21%</strong> to Labour
+       <strong>0.10%</strong> to Liberal
+                        </pre>
+         </div>
+         
+         
+         <div id="minor">
+                <h5><strong><strong>443</strong> Small donations</strong></h5>
+               
+                    
+                        <pre>Being: <strong>0.67%</strong> to Conservative 
+       <strong>0.17%</strong> to Labour
+       <strong>0.16%</strong> to Liberal
+                        </pre>
+         </div> 
+         
+        </div> <!-- END view-by-amount -->
+
+
     </div>
+
+
+
     <div id="chart"></div>
 
-
+    <!-- http://www.masswerk.at/mespeak/ </-->
+    <script src="mespeak/mespeak.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
