@@ -353,7 +353,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
+	responsiveVoice.speak(d.donor + amount);
 	}
 
 function mouseout() {
@@ -364,6 +364,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+		responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
