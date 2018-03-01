@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
 
+    <script>                                                //add sound on click
+        var onClick_Sound2 = new Audio();
+        onClick_Sound2.src = "moneysound.mp3";
+    </script>
+    
     <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-44807543-1']);
@@ -38,15 +43,22 @@
     <header role="banner" id="title">
         <h1>Who's funding the big three?</h1>
     </header>
-    <nav role="navigation">
+    
+    <!-- Add action on mouse click -->
+    
+    <nav role="navigation"> 
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" onclick="onClick_Sound2.play()" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            
+            <li><a href="#" onclick="onClick_Sound2.play()" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" onclick="onClick_Sound2.play()" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" onclick="onClick_Sound2.play()" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            </li>
+            <!-- Add button for bigdonor view -->
+            <li><a href="#" onclick="onClick_Sound2.play()" role="button" class="pure-button switch" id="group-by-bigdonor">Big Donors</a>
             </li>
         </ul>
     </nav>
@@ -201,6 +213,19 @@
     </div>
     <div id="chart"></div>
 
+    <!-- Add details on bigdonor view -->
+    <div id="view-bigdonor-type">  
+              <div id="donors">
+                 <h2>Big Donors</h2>
+              </div>   
+              <div id="smalldonors">
+                  <h5> Small Donors (Up to 1 million pounds) </h5>
+             </div>
+             
+             <div id="bigdonors">    
+                 <h5> Big Donors (More than 1 million pounds) </h5>
+             </div> 
+        </div>       
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
