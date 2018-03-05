@@ -26,7 +26,7 @@ li {
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
+#view-party-type, #view-donor-type, #view-source-type, #view-amount-type {
     display: none;
 }
 
@@ -39,6 +39,41 @@ li {
     left: 650px;
     width: 272px;
 }
+
+#view-amount-type {
+    height: 100%;
+}
+
+#amountofdonation {
+    left: 500px;
+    top: 150px;
+    position: absolute;
+}
+
+#Upto500000 {
+    left: 200px;
+    top: 200px;
+    position: absolute;
+}
+
+#Upto5000000 {
+    left: 750px;
+    top: 250px;
+    position: absolute;
+}
+
+#Upto10000000 {
+    left: 150px;
+    top: 800px;
+    position: absolute;
+}
+
+#Upto20000000 {
+    left: 750px;
+    top: 700px;
+    position: absolute;
+}
+
 
 /*  Public or private funds view */
 
@@ -63,15 +98,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: rgba(255, 255, 0, 0.9);
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: rgba(255, 0, 0, 0.9);
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: rgba(0, 0, 255, 0.9);
     top: 550px;
 }
 
