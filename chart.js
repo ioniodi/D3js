@@ -364,6 +364,7 @@ $(document).ready(function() {
       return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
+    return window.open('https://google.com.search?q=', csv)
 
 });
 
