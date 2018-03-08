@@ -74,7 +74,7 @@ function transition(name) {
 		$("#view-donor-type").fadeIn(1000);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source") {
 		sound.currentTime=0;
 		sound.play();
 		$("#initial-content").fadeOut(250);
