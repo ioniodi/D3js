@@ -307,6 +307,14 @@ function display(data) {
 	return start();
 }
 
+
+function onClick(d){
+	var donor = d.donor;
+	url ='http://www.google.com/search?q=' + donor;
+    	window.open(url,'_blank');	
+}
+
+
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -345,7 +353,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
+	responsiveVoice.speak(d.donor + amount);
 	}
 
 function mouseout() {
@@ -356,6 +364,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+		responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
