@@ -110,24 +110,24 @@ li {
     
 }
 #group1 {
-    top: 55px;
+    top: 155px;
 
 }
 #group2 {
-    top: 40px;
-	left:300px;
+    top: 140px;
+	right:300px;
 }
 #group3 {
-    top: 70px;
-	left:500px;
+    top: 170px;
+	right:500px;
 }
 #group4 {
-    top: 355px;
-    left:120px;
+    top: 455px;
+    right:120px;
 }
 #group5 {
-    top: 250px;
-    left:250px;
+    top: 350px;
+    right:250px;
 }
 
 /* Value scale */
