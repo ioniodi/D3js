@@ -111,7 +111,7 @@ li {
 }
 #group1 {
     top: 155px;
-
+    left:100px;
 }
 #group2 {
     top: 140px;
@@ -119,15 +119,15 @@ li {
 }
 #group3 {
     top: 170px;
-	right:500px;
+	right:490px;
 }
 #group4 {
     top: 455px;
-    right:120px;
+    left:120px;
 }
 #group5 {
-    top: 350px;
-    right:250px;
+    top: 370px;
+    right:500px;
 }
 
 /* Value scale */
