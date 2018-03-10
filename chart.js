@@ -370,5 +370,9 @@ $(document).ready(function() {
 
 });
 
+document.getElementById("demo").onclick = function() {myFunction()};
 
+function myFunction() {
+    document.getElementById("demo").innerHTML = "https://google.com.search?q= ", donor;
+}
 
