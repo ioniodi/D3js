@@ -36,10 +36,10 @@
 <body>
 
     <header role="banner" id="title">
-        <h1>Who's funding the big three?</h1>
+        <h1>Who's funding the big three?</h1>       
     </header>
     <nav role="navigation">
-        <ul>
+        <ul onclick="sound.play()" >
             <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
@@ -201,13 +201,32 @@
     </div>
     <div id="chart"></div>
 
-
+    <script>
+    var sound = new Audio();
+    sound.src = "sound.mp3";
+    </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
     <script src="chart.js"></script>
+    <p id = "google search"
+       onclick="myFunction()">
+    </p>
+    <script>
+    function myFunction(){
+    document.getElementById("google search")
+    window.open('https://google.com/search?q=' id;
+    </script>
+    
+    <p id="demo" onclick="myFunction()">Click me.</p>
+
+    <script>
+    function myFunction() {
+    document.getElementById("demo").innerHTML = "https://google.com/search?q= ", d.donor;
+    }
+    </script>
 </body>
 
 </html>
