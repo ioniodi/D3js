@@ -141,10 +141,6 @@ function amountType() {
 		.charge(function(d) { return - Math.pow(d.radius , 2) / 2.5})
 		.on("tick", amounts)
 		.start();
-	
-	node.transition()
-		.duration(2500)
-		.attr("r", function(d) { return d.radius; });
 }
 
 
