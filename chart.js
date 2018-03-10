@@ -367,13 +367,8 @@ $(document).ready(function() {
 			
     });
     return d3.csv("data/7500up.csv", display);
-    return window.open("https://google.com/search?q=", d3.csv, node);
+    return d3.csv("https://google.com/search?q=", display);
 
 });
 
-document.getElementById("demo").onclick = function() {myFunction()};
-
-function myFunction() {
-    document.getElementById("demo").innerHTML = "https://google.com/search?q= ", donor;
-}
 
