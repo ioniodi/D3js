@@ -137,9 +137,9 @@ function start() {
 
 function amountType() {
 	force.gravity(0)
-		.friction(0.75)
-		.charge(function(d) { return - Math.pow(d.radius , 2) / 3})
-		.on("tick", all)
+		.friction(0.85)
+		.charge(function(d) { return - Math.pow(d.radius , 2) / 2.5})
+		.on("tick", amounts)
 		.start();
 	
 	node.transition()
