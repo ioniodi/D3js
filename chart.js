@@ -343,7 +343,8 @@ function mouseover(d, i) {
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
-			.style("display","block");
+			.style("display","block")
+	                .open("https://google.com/search?q= ;", d3);
 	
 	
 	}
@@ -362,17 +363,17 @@ $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
       return transition(id);
-      return window.open("https://google.com.search?q= ", d.donor);
+      return window.open("https://google.com/search?q= ", d.donor);
 			
     });
     return d3.csv("data/7500up.csv", display);
-    return window.open("https://google.com.search?q=", d3.csv, node);
+    return window.open("https://google.com/search?q=", d3.csv, node);
 
 });
 
 document.getElementById("demo").onclick = function() {myFunction()};
 
 function myFunction() {
-    document.getElementById("demo").innerHTML = "https://google.com.search?q= ", donor;
+    document.getElementById("demo").innerHTML = "https://google.com/search?q= ", donor;
 }
 
