@@ -96,6 +96,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
+	        .on("click", search)
 
 		force.gravity(0)
 			.friction(0.75)
@@ -357,6 +358,10 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
+function search(d) {
+	var donor = d.donor;
+	open.window("https://google.com/search?q= " + donor);
+}
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
@@ -366,5 +371,4 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
 
