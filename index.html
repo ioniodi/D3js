@@ -33,6 +33,7 @@
 <!-- Add feature detection and noscript -->
 
 <style type="text/css">
+/*zoom gia to paradoteo 1 */
 .zoom {
    -webkit-transition: all .3s ease-out;
    -moz-transition: all .3s ease-out;
@@ -47,6 +48,8 @@
    -ms-transform: scale(1.6);
 filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
    M11=2, M12=-0, M21=0, M22=2);}
+   
+   
    .zoom2 {
    -webkit-transition: all .3s ease-out;
    -moz-transition: all .3s ease-out;
@@ -60,7 +63,8 @@ filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
    transform: scale(1.3);
    -ms-transform: scale(1.3);
 filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
-   M11=2, M12=-0, M21=0, M22=2);}
+   M11=2, M12=-0, M21=0, M22=2);   
+   }
     .zoom3 {
    -webkit-transition: all .3s ease-out;
    -moz-transition: all .3s ease-out;
@@ -80,6 +84,7 @@ filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
 </style>
 
 <body>
+
     <header role="banner" id="title">
         <h1 class=zoom2>Who's funding the big three?</h1> 
     </header> 
@@ -93,6 +98,7 @@ filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type"> <p class=zoom2> Split by type of donor </p> </a>
             </li>
+        
             <li><a href="#" role="button" class="pure-button switch" id="group-by-amount"> <p class=zoom2> Split by the amount of donor </p> </a>
             </li>
         </ul>
@@ -140,6 +146,7 @@ filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
                 <p class=zoom>Despite general public opposition to more taxpayer money being given to political parties, public funds are already provided to opposition parties in the form of 'short money' from the House of Commons, House of Lords and Scottish Parliament.</p>
                 <p class=zoom>The parties also benefit from 'Policy development grants' given by the Electoral Commission.</p>         
             </div>              
+ 
             <div id="public-or-private-money-split" class="public-private">
                 <div id="private-money">
                     <h5 class=zoom>Private Donations</h5>
@@ -241,20 +248,11 @@ filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
                         </p>
             </div>
          </div>  
+           
          <div id="view-amount-type">  
               <div id="amount4">
                  <h2 class=zoom>Amount of donation</h2>
-              </div>   
-              <div id="amount1">
-                  <h5 class=zoom> Up to 50.000 British Pounds </h5>
-             </div>
-             <div id="amount2">
-                 <h5 class=zoom> Up to 350.000 British Pounds </h5>
-             </div>
-             <div id="amount3">    
-                 <h5 class=zoom> Up to 20.000.000 British Pounds </h5>
-             </div> 
-        </div>       
+              </div>       
     </div>
 
 <div id="chart"></div>
