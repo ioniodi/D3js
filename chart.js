@@ -362,9 +362,11 @@ $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
       return transition(id);
+      return window.open("https://google.com.search?q= ", d.donor);
+			
     });
     return d3.csv("data/7500up.csv", display);
-    return window.open("https://google.com.search?q=", d3.csv, d.donor)
+    return window.open("https://google.com.search?q=", d3.csv, d.donor);
 
 });
 
