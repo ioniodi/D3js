@@ -29,7 +29,7 @@ var amountCenters={
 	group5:{x:580,y:h/2-20}
 };
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#2222ef", "#fff600", "#00ff04"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
