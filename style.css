@@ -21,12 +21,12 @@ li {
 
 /* 	Information boxes for different chart layouts */
 /* Positioning */
-#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
+#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money ,#group1,#group2,#group3,#group4,#group5{ 
     position: absolute; 
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
+#view-party-type, #view-donor-type, #view-source-type, #view-by-amount{
     display: none;
 }
 
@@ -63,15 +63,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: rgba(108, 27, 289, 0.3);
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: rgba(100, 234, 71, 0.2);
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: rgba(23, 207, 118, 0.3);
     top: 550px;
 }
 
@@ -102,6 +102,34 @@ li {
     right: 0
 }
 
+/* split by amount */
+#view-by-amount {
+    height: 100%;
+    left: 500px;
+    width: 370px;
+    
+}
+#group1 {
+    top: 155px;
+    left:100px;
+}
+#group2 {
+    top: 140px;
+	left:400px;
+}
+#group3 {
+    top: 170px;
+	right:490px;
+}
+#group4 {
+    top: 400px;
+    left:230px;
+}
+#group5 {
+    top: 340px;
+    right:800px;
+}
+
 /* Value scale */
 
 #value-scale {
@@ -125,6 +153,14 @@ circle {
 circle.active {
     stroke: rgba(17, 17, 17, 0.8);
     stroke-width: 5;
+}
+
+.zoom{
+	transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(1.35); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .legend circle {
