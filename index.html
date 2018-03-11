@@ -37,8 +37,12 @@
 
     <header role="banner" id="title">
         <h1>Who's funding the big three?</h1>
+        <script>
+            var clickSound=new Audio();
+            clickSound.src="assets/Button_Push.wav";
+        </script>
     </header>
-    <nav role="navigation">
+    <nav role="navigation" onmousedown="clickSound.play()">
         <ul>
             <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
@@ -48,6 +52,8 @@
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
+            <li><a href="#" role="button" class="pure-button switch" id="split-by-the-amount-of-the-donation" >Split by the amount of the donation</a> 
+            </li>
         </ul>
     </nav>
 
@@ -55,13 +61,13 @@
 
         <!-- Initial annotations -->
         <div id="initial-content">
-            <h2>Political donations and funding accepted by the Conservatives, Labour and Liberal Democrats between the 2010 general election and August 2013, when this data was collected.</h2>
-            <p>Each circle represents the total amount donated by a single donor group, funding organisation or individual during that period.</p>
-            <p>Hover over a circle to show further information.</p>
+            <h2  class="zoom"> Political donations and funding accepted by the Conservatives, Labour and Liberal Democrats between the 2010 general election and August 2013, when this data was collected.<br></h2>
+            <p class="zoom">Each circle represents the total amount donated by a single donor group, funding organisation or individual during that period.<br></p>
+            <p class="zoom">Hover over a circle to show further information.<br></p>
 
-            <p>Get an immediate overview of how party funding is shaped in Britain today by selecting one of the options at the top of the page.</p>
-            <p>Data is based on all reportable donations over &#163;7500.</p>
-            <p>Data source: <a href="http://www.electoralcommission.org.uk/">The Electoral Commission.</a>
+            <p class="zoom">Get an immediate overview of how party funding is shaped in Britain today by selecting one of the options at the top of the page.</p>
+            <p class="zoom">Data is based on all reportable donations over &#163;7500.</p>
+            <p class="zoom">Data source: <a href="http://www.electoralcommission.org.uk/">The Electoral Commission.</a>
             </p>
         </div>
         <div id="value-scale">
@@ -89,9 +95,10 @@
         <!-- Public or private money annotations -->
         <div id="view-source-type">
             <div id="public-or-private-money" class="public-private">
-                <h3>Public money vs private cash</h3>
-                <p>Despite general public opposition to more taxpayer money being given to political parties, public funds are already provided to opposition parties in the form of 'short money' from the House of Commons, House of Lords and Scottish Parliament.</p>
-                <p>The parties also benefit from 'Policy development grants' given by the Electoral Commission.</p>
+                <h3 class="zoom">Public money vs private cash<br></h3>
+                <p class="zoom">Despite general public opposition to more taxpayer money being given to political parties, public funds are already provided to opposition parties in the form of 'short money' from the House of Commons, House of Lords and Scottish Parliament.<br></p>
+                <p>  <br></p>
+				      <p class="zoom">The parties also benefit from 'Policy development grants' given by the Electoral Commission.</p>
             </div>
             <div id="public-or-private-money-split" class="public-private">
                 <div id="private-money">
@@ -198,10 +205,28 @@
                         </p>
             </div>
         </div>
+        <div id="view-by-amount">
+            <div id="group1">
+                <h4 class="zoom">0&#163;-25000&#163;</h4>
+            </div>
+            <div id="group2">
+                <h4 class="zoom">25001&#163;-50000&#163;</h4>
+            </div>
+            <div id="group3">
+                <h4 class="zoom">50001&#163;-100000&#163;</h4>
+            </div>
+            <div id="group4">
+                <h4 class="zoom">100001&#163;-500000&#163;</h5>
+            </div>
+            <div id="group5">
+                <h4 class="zoom">>=500001&#163;</h5>
+            </div>
+        </div>
     </div>
     <div id="chart"></div>
 
 
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
