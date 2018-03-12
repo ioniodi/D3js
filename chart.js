@@ -23,7 +23,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#3cb371", "#787878", "#ff0000"]);
+var fill = d3.scale.ordinal().range(["#000000", "#787878", "#4d0000"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -113,7 +113,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		.on("click", function(d) {window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);});
+		.on("click", function(d) {window.open("https://www.google.gr/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -162,19 +162,13 @@ function fundsType() {
 		.on("tick", types)
 		.start();
 }
+
 function amountType() {
 	force.gravity(0)
 		.friction(0.75)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", amounts)
 		.start();
-}
-
-function amounts(e) {
-	node.each(moveToAmount(e.alpha));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
 }
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -198,6 +192,13 @@ function types(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+
 function all(e) {
 	node.each(moveToCentre(e.alpha))
 		.each(collide(0.001));
@@ -205,7 +206,6 @@ function all(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
-
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -279,10 +279,10 @@ function moveToAmount(alpha) {
 		
 		if (d.value <= 25000) { 
 			centreX = svgCentre.x ;
-			centreY = svgCentre.y + 80;
+			centreY = svgCentre.y + 100;
 		} else if (d.value <= 500000) { 
 			centreX = svgCentre.x + 350;
-			centreY = svgCentre.y + 80;
+			centreY = svgCentre.y + 100;
 		} else if (d.value <= 5000000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y - 180;
@@ -399,7 +399,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-			responsiveVoice.speak("The" + d.donor + "donated an amount of" + d.amount + "british pounds!");
+			responsiveVoice.speak("The donor" + d.donor + "donated" + d.amount + "british pounds!");
 	
 	
 	}
