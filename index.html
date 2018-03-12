@@ -20,7 +20,6 @@
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-44807543-1']);
     _gaq.push(['_trackPageview']);
-
     (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
@@ -30,36 +29,32 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
-
-    <style>
+    
+ <style>
 .zoom:hover {
-    transform: scale(1.5);
+    transform: scale(1.5); 
 }
 </style>
 <div class="zoom"></div> 
-
 </head>
 <!-- Add feature detection and noscript -->
 
 <body>
 
     <header role="banner" id="title">
-        <h1 class=zoom>Who's funding the big three?</h1>
-     
-     
-</header>
-
+        <h1 class="zoom">Who's funding the big three?</h1>
+    </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations"> <p class ="zoom">All money </p></a>
+            <li><a href="#" role="button" class="pure-button switch" id="all-donations"> <p class="zoom">All money </p></a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source"> <p class ="zoom">The public's purse </p></a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source"> <p class="zoom">The public's purse </p></a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-party"> <p class="zoom">Split by party </p></a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type"> <p class="zoom">Split by type of donor </p></a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donation-amount"> <p class="zoom">Split by the amount of the donation </p></a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount"> <p class="zoom">Split by the amount of the donation </p></a>
             </li>
         </ul>
     </nav>
@@ -128,7 +123,7 @@
         <!-- End public or private money -->
 
         <div id="view-party-type">
-            <h3 class="zoom">Income for each party from private sources.</h3>
+            <h3 class="zoom" >Income for each party from private sources.</h3>
             <div id="conservative" class="zoom">
                 <h5>Conservative Party</h5>
                 <strong>Total: &#163;43.7 million
@@ -169,7 +164,7 @@
                             <strong>43%</strong>of the total</p>
             </div>
         </div>
-        <div id="view-donor-type">
+        <div id="view-donor-type" >
             <div id="individual" class="zoom">
                 <h5>Individuals</h5>
                 <strong>Total: &#163; 35,191,222
@@ -209,16 +204,17 @@
                         <p>Proportion of all donations:
                             <strong>2%</strong>
                         </p>
-            </div>
+            </div>            
         </div>
-     <div id="view-donation-amount">
-            <h4 class="zoom" id="firt"> 0 - 25K British Pounds</h4>
-            <h4 class="zoom" id="second"> 25K - 500K British Pounds</h4>
-            <h4 class="zoom" id="third"> 500K - 5M British Pounds</h4>
-            <h4 class="zoom" id="last"> 5M - 20M British Pounds</h4>
+        
+        <div id="view-donation-amount" >
+            <h4 class="zoom" id="first"> 0 - 25K GBP</h4>
+            <h4 class="zoom" id="second"> 25K - 500K GBP</h4>
+            <h4 class="zoom" id="third"> 500K - 5M GBP</h4>
+            <h4 class="zoom" id="last"> 5M - 20M GBP</h4>
         </div>    
     </div>
-<div id="chart"></div>
+    <div id="chart"></div>
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -227,6 +223,7 @@
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
     <script src="chart.js"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </body>
 
 </html>
