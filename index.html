@@ -48,6 +48,8 @@
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
+			<li><a href="#" role="button" class="pure-button switch" id="group-by-amount-type">Split by the amount of the donation</a>
+            </li>
         </ul>
     </nav>
 
@@ -55,14 +57,18 @@
 
         <!-- Initial annotations -->
         <div id="initial-content">
-            <h2>Political donations and funding accepted by the Conservatives, Labour and Liberal Democrats between the 2010 general election and August 2013, when this data was collected.</h2>
-            <p>Each circle represents the total amount donated by a single donor group, funding organisation or individual during that period.</p>
-            <p>Hover over a circle to show further information.</p>
+			<div id ="zoom">
+				 <div class="small">
+					<h2>Political donations and funding accepted by the Conservatives, Labour and Liberal Democrats between the 2010 general election and August 2013, when this data was collected.</h2>
+					<p>Each circle represents the total amount donated by a single donor group, funding organisation or individual during that period.</p>
+					<p>Hover over a circle to show further information.</p>
 
-            <p>Get an immediate overview of how party funding is shaped in Britain today by selecting one of the options at the top of the page.</p>
-            <p>Data is based on all reportable donations over &#163;7500.</p>
-            <p>Data source: <a href="http://www.electoralcommission.org.uk/">The Electoral Commission.</a>
-            </p>
+					<p>Get an immediate overview of how party funding is shaped in Britain today by selecting one of the options at the top of the page.</p>
+					<p>Data is based on all reportable donations over &#163;7500.</p>
+					<p>Data source: <a href="http://www.electoralcommission.org.uk/">The Electoral Commission.</a>
+					</p>
+				</div>
+			</div>
         </div>
         <div id="value-scale">
             <div id="f">
@@ -198,6 +204,27 @@
                         </p>
             </div>
         </div>
+		
+		<div id="view-amount-type">
+		
+            <h3>By Amount</h3>
+			
+            <div id="conservative">
+                <h5>Big Amount</h5>
+                <strong>Above &#163; 1000000</strong>                        
+            </div>
+			
+            <div id="labour">
+                <h5>Small Amount</h5>
+                <strong>Below &#163; 1000000</strong>
+            </div>            
+			
+			<div id="libdem">
+			</div>
+        </div>
+        
+		
+		
     </div>
     <div id="chart"></div>
 
@@ -208,6 +235,81 @@
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
     <script src="chart.js"></script>
+	
+
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.min.js"></script>
+	<script src="speech.js"></script>
+	
+	<link rel="stylesheet" href="anythingzoomer.css">
+	<script src="jquery.anythingzoomer.js"></script>
+	
+	<script>
+  $(function(){
+    $("#zoom").anythingZoomer({
+
+    // ***************** content areas *****************
+    // class of small content area; the element with this class
+    // name must be inside of the wrapper
+    smallArea: 'small',
+
+    // class of large content area; this class must exist inside
+    // of the wrapper. When the clone option is true, it will add
+    // this automatically
+    largeArea: 'large',
+
+    // Make a clone of the small content area, use css to modify
+    // the style; default is false;
+    // set to true here to clone the small content
+    clone: true,
+
+    // ***************** appearance *****************
+    // Set to true to add the overlay style while hovering the
+    // small content, false to disable
+    overlay: true,
+
+    // fade animation speed (in milliseconds)
+    speed: 10,
+
+    // How far outside the wrapped edges the mouse can go;
+    // previously called "expansionSize"
+    edge: 30,
+
+    // adjust the horizontal position of the large content inside
+    // the zoom window as desired
+    offsetX: 0,
+
+    // adjust the vertical position of the large content inside
+    // the zoom window as desired
+    offsetY: 0,
+
+    // ***************** functionality *****************
+    // event that allows toggling between small and large
+    // elements; default is double click ('dblclick')
+    switchEvent: 'dblclick',
+
+    // time to delay before revealing the zoom window.
+    delay: 0,
+
+    // ***************** edit mode *****************
+    // add x,y coordinates into zoom window to make it easier to
+    // find coordinates
+    edit: false,
+
+    // ***************** callbacks *****************
+    // AnythingZoomer done initializing
+    initialzied: function(e, zoomer) {},
+
+    // zoom window visible
+    zoom: function(e, zoomer) {},
+
+    // zoom window hidden
+    unzoom: function(e, zoomer) {}
+
+  });
+  });
+</script>
+	
 </body>
 
 </html>
