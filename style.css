@@ -151,16 +151,16 @@ circle.active {
 .tooltip p, h3 {
     margin: 0.2em;
 }
-.lab {
+.lab path {
     fill: #616161;
 }
-.lib {
+.lib path {
     fill: #4E342E;
 }
-.con {
+.con path {
     fill: #DD2C00;
 }
-.snp {
+.snp path {
     fill: #546E7A;
 }
 /*!
