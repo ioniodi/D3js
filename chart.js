@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#006400", "#BDB76B", "#8B008B"]);
+var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -96,7 +96,6 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-	        
 
 		force.gravity(0)
 			.friction(0.75)
@@ -359,7 +358,6 @@ function mouseout() {
 			.style("display", "none");
 		}
 
-
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
       var id = d3.select(this).attr("id");
@@ -368,4 +366,3 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
