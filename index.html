@@ -30,6 +30,14 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+   <!-- Adding the sound to be heard when a sorting button is clicked --> 
+    <script>
+var beep = new Audio();
+beep.src = 'buttonsound.mp3';
+</script>
+    
+    
 </head>
 <!-- Add feature detection and noscript -->
 
@@ -40,16 +48,21 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" onmousedown="beep.play()" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" onmousedown="beep.play()" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" onmousedown="beep.play()" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" onmousedown="beep.play()" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
+            
         </ul>
     </nav>
+    
+    
+    
+  
 
     <div id="annotations">
 
