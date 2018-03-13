@@ -6,7 +6,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 var bleep = new Audio();
-bleep.src = "soundbutton.mp3";
+bleep.src = "Tiny Button Push.mp3";
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -23,7 +23,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#000000", "#ffa500", "#787878"]);
+var fill = d3.scale.ordinal().range(["#000000", "#ff0000", "#686868"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -114,7 +114,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) {window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);});
+	        .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -251,25 +251,31 @@ function moveToParties(alpha) {
 
 function moveToAmount(alpha) {
 	return function(d) {
-		
-		if (d.value <= 25000) { 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y + 80;
-		} else if (d.value <= 500000) { 
-			centreX = svgCentre.x + 350;
-			centreY = svgCentre.y + 80;
-		} else if (d.value <= 5000000) { 
-			centreX = svgCentre.x ;
-			centreY = svgCentre.y - 180;
-		} else{
-			centreX = svgCentre.x + 350;
-			centreY = svgCentre.y - 180;
-		}
+			var centreX;
+			var centreY;
 
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
+		if (d.value <= 25000) {
+			centreX = 200;
+			centreY = 300;
+				
+		} else if (d.value <= 500000) {
+				centreX = 700;
+				centreY = 300;
+				
+		} else if (d.value <=5000000) {
+				centreX = 200;
+				centreY = 600;
+				
+		} else{
+			   centreX = 700;
+                           centreY = 600;
+	        }
+
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
+    };
 }
+
 
 function moveToEnts(alpha) {
 	return function(d) {
@@ -296,8 +302,8 @@ function moveToFunds(alpha) {
 			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+                d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
 	};
 }
 
@@ -404,7 +410,8 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	responsiveVoice.speak("The" + d.donor + "donated an amount of" + d.amount + "british pounds!");
+	var voice = new SpeechSynthesisUtterance("The donor" + donor + " donated " + amount + "british pounds");
+        window.speechSynthesis.speak(voice);
 	
 	
 	}
