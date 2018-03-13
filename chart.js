@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#3a80f2", "#032459", "#10b72c"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -92,7 +92,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open('https://google.com/search?q=' + d.donor)}); 
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -344,7 +345,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
+	responsiveVoice.speak(donor + "donated" + amount + "pounds");
 	
 	}
 
@@ -356,6 +357,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
