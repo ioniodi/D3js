@@ -50,6 +50,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250); /*Paradoteo 1*/
 		return total();
 		//location.reload();
 	}
