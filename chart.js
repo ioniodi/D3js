@@ -5,6 +5,8 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+/*paradoteo 1 */
+var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -76,6 +78,31 @@ function transition(name) {
 		return fundsType();
 	}
 
+
+/*paradoteo 1*/
+	if (name === "group-by-amount"){
+		sound.currentTime=0; 
+		sound.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
+		return amountType();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -93,6 +120,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
+	.on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1 google result  */
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -107,6 +135,24 @@ function start() {
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
 }
+
+
+
+/*paradoteo 1 function */
+function amountType() {
+	force.gravity(0)
+		.friction(0.85)
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.on("tick", amounts)
+		.start();
+}
+
+
+
+
+
+
+
 
 function total() {
 
@@ -142,6 +188,26 @@ function fundsType() {
 		.start();
 }
 
+
+/*paradoteo 1 function*/
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+
+
+
+
+
+
+
+
+
+
+
+
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -171,6 +237,45 @@ function all(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
+
+
+
+/*paradoteo 1 */
+
+function moveToAmount(alpha) {
+	return function(d) {
+		
+		if (d.value <= 50000) { 
+			centreX = svgCentre.x ;
+			centreY = svgCentre.y -50;
+		} else if (d.value <= 350000) { 
+			centreX = svgCentre.x + 150;
+			centreY = svgCentre.y ;
+		} else if (d.value <= 20000000){ 
+			centreX = svgCentre.x + 300;
+			centreY = svgCentre.y + 50;
+		}
+
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function moveToCentre(alpha) {
@@ -348,10 +453,46 @@ function mouseover(d, i) {
 	
 	}
 
-function mouseout() {
-	// no more tooltips
-		var mosie = d3.select(this);
 
+
+
+
+/* Paradoteo 1 */
+	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
+	window.speechSynthesis.speak(msg);
+	
+	mosie.classed("active", true);
+	d3.select(".tooltip")
+  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
+ 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+		.html(infoBox)
+			.style("display","block");
+	}
+
+
+
+
+
+
+
+
+
+
+/* Paradoteo 1*/	
+		window.speechSynthesis.cancel();
+		var mosie = d3.select(this);
+		mosie.classed("active", false);
+
+		d3.select(".tooltip")
+			.style("display", "none");
+		}
+
+
+function mouseout() {
+	/* no more tooltips */
+/* Paradoteo 1: Cancel the voice if the mouse is no longer over a circle*/	
+		window.speechSynthesis.cancel();
+		var mosie = d3.select(this);
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
@@ -364,5 +505,5 @@ $(document).ready(function() {
       return transition(id);
     });
     return d3.csv("data/7500up.csv", display);
-
+	
 });
