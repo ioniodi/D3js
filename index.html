@@ -30,6 +30,13 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+    <script>
+    var buttonSound = new Audio ();
+    buttonSound.src = "buttonSound.wav";
+    
+    </script>
+    
 </head>
 <!-- Add feature detection and noscript -->
 
@@ -40,13 +47,13 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" role="button" class="pure-button switch" id="all-donations" onmousedown="buttonSound.play()"=>All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source" onmousedown="buttonSound.play()">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-party" onmousedown="buttonSound.play()" >Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type" onmousedown="buttonSound.play()">Split by type of donor</a>
             </li>
         </ul>
     </nav>
