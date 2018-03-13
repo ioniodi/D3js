@@ -32,7 +32,7 @@
     
  <style>
 .zoom:hover {
-    transform: scale(1.5); 
+    transform: scale(1.4); /* (140% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 </style>
 <div class="zoom"></div> 
@@ -207,13 +207,12 @@
             </div>            
         </div>
         
-       <div id="view-donation-amount">
-             <h4 class="zoom" id="first"> 0 - 25K British Pounds</h4>
-             <h4 class="zoom" id="second"> 25K - 500K British Pounds</h4>
-             <h4 class="zoom" id="third"> 500K - 5M British Pounds</h4>
-             <h4 class="zoom" id="last"> 5M - 20M British Pounds</h4>
-        </div>
-
+        <div id="view-amount-type" >
+            <h4 class="zoom" id="ID25K"> 0 - 25K GBP</h4>
+            <h4 class="zoom" id="ID500K"> 25K - 500K GBP</h4>
+            <h4 class="zoom" id="ID5M"> 500K - 5M GBP</h4>
+            <h4 class="zoom" id="ID20M"> 5M - 20M GBP</h4>
+        </div>    
     </div>
     <div id="chart"></div>
 
