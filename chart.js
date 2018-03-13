@@ -251,27 +251,31 @@ function moveToParties(alpha) {
 
 function moveToAmount(alpha) {
 	return function(d) {
-		var centreX;
-                var centreY;
-		
-		if (d.value <= 25000) { 
-			centreY = 300;
-                        centreX = 200;
-		} else if (d.value <= 500000) { 
-			centreY = 600;
-                        centreX = 200;
-		} else if (d.value <= 5000000) { 
-			centreY = 700;
-                        centreX = 750;
-		} else{
-			centreY = 800;
-                        centreX = 200;
-		}
+			var centreX;
+			var centreY;
 
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
+		if (d.value <= 25000) {
+			centreY = 300;
+			centreX = 200;
+				
+		} else if (d.value <= 500000) {
+				centreY = 450;
+				centreX = 700;
+				
+		} else if (d.value <=5000000) {
+				centreY = 600;
+				centreX = 200;
+				
+		} else{
+			   centreX = 700;
+               centreY = 750;
+	        }
+
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
+    };
 }
+
 
 function moveToEnts(alpha) {
 	return function(d) {
