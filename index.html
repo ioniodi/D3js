@@ -30,6 +30,14 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+   <!-- Adding the sound to be heard when a sorting method is clicked --> 
+    <script>
+var beep = new Audio();
+beep.src = 'buttonsound.mp3';
+</script>
+    
+    
 </head>
 <!-- Add feature detection and noscript -->
 
@@ -48,8 +56,16 @@
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
+            <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">All money</a>
+    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">The public's purse</a>
+    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">Split by party</a>
+    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">Split by type of donor</a>
         </ul>
     </nav>
+    
+    
+    
+  
 
     <div id="annotations">
 
