@@ -5,13 +5,15 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-/*paradoteo 1 */
+/*paradoteo 1: new variable that gets a sound file*/
+var sound = new Audio("SoundButton.mp3");        
+/*paradoteo 1: new variable that gets a url for google search*/
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3	, y: h / 1.8}
+    lib: {x: w / 3, y: h / 1.8}
   };
 
 var entityCentres = { 
@@ -20,10 +22,10 @@ var entityCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3},
+		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
-
-var fill = d3.scale.ordinal().range(["#ffbf00", "#40ff00", "#ff00ff"]);
+/*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
+var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -45,42 +47,51 @@ var comma = d3.format(",.0f");
 
 function transition(name) {
 	if (name === "all-donations") {
+		sound.currentTime=0;    /*paradoteo 1: start from the beginning*/
+		sound.play();           /*paradoteo 1: play the sound.mp3*/
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeOut(250); /*Paradoteo 1*/
+		$("#view-amount-type").fadeOut(250); /*Paradoteo 1: new amount view*/
 		return total();
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		sound.currentTime=0;    /*paradoteo 1: start from the beginning*/
+		sound.play();           /*paradoteo 1: play the sound.mp3*/
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		sound.currentTime=0;  
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source"){
+		sound.currentTime=0; 
+		sound.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-
-
-/*paradoteo 1*/
+/*paradoteo 1: new slpit by. This block of code makes view-amount-type to appear, while it hides every other view.*/
 	if (name === "group-by-amount"){
 		sound.currentTime=0; 
 		sound.play();
@@ -93,16 +104,6 @@ function transition(name) {
 		return amountType();
 	}
 }
-
-
-
-
-
-
-
-
-
-
 
 function start() {
 
@@ -120,11 +121,12 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
-	.on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1 google result  */
+		.on("mouseout", mouseout)
+	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	
 		// Alternative title based 'tooltips'
 		// node.append("title")
-		//	.text(function(d) { return d.donor; });
+		//	.text({ return d.donor; });
 
 		force.gravity(0)
 			.friction(0.75)
@@ -137,9 +139,7 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-
-
-/*paradoteo 1 function */
+/*paradoteo 1: new function for new split*/
 function amountType() {
 	force.gravity(0)
 		.friction(0.85)
@@ -147,13 +147,6 @@ function amountType() {
 		.on("tick", amounts)
 		.start();
 }
-
-
-
-
-
-
-
 
 function total() {
 
@@ -189,25 +182,13 @@ function fundsType() {
 		.start();
 }
 
-
-/*paradoteo 1 function*/
+/*paradoteo 1: new function for new split.*/
 function amounts(e) {
 	node.each(moveToAmount(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -239,9 +220,7 @@ function all(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 
-
-
-/*paradoteo 1 */
+/*paradoteo 1: New way to split the circles */
 
 function moveToAmount(alpha) {
 	return function(d) {
@@ -261,23 +240,6 @@ function moveToAmount(alpha) {
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -394,14 +356,15 @@ function display(data) {
 				donor: d.donor,
 				party: d.party,
 				partyLabel: d.partyname,
-				entity: d.entity,
+			        entity: d.entity,
 				entityLabel: d.entityname,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
-			
-      nodes.push(node)
+
+		
+      nodes.push(node);            /*i put a semicolon*/
 	});
 
 	console.log(nodes);
@@ -413,7 +376,14 @@ function display(data) {
 	return start();
 }
 
+
 function mouseover(d, i) {
+	//paradoteo 2 doesn't work yet
+	//var img = document.createElement("img");
+	//img.src = "photos/CWU.ico";
+	//document.body.appendChild(img);
+	
+	
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
@@ -421,28 +391,21 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
+	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
+								+ "<p> Recipient: <b>" + party + "</b></p>"
+								+ "<p> Type of donor: <b>" + entity + "</b></p>"
+								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
 
-
+/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-
-	
-	
-	// *******************************************
-	
-	
-	
-
-	
-
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
++ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
@@ -452,13 +415,13 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
-	}
 
-
-
-
-
-/* Paradoteo 1 */
+/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
+	
+	
+	
+	
+/* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
 	window.speechSynthesis.speak(msg);
 	
@@ -469,25 +432,6 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	}
-
-
-
-
-
-
-
-
-
-
-/* Paradoteo 1*/	
-		window.speechSynthesis.cancel();
-		var mosie = d3.select(this);
-		mosie.classed("active", false);
-
-		d3.select(".tooltip")
-			.style("display", "none");
-		}
-
 
 function mouseout() {
 	/* no more tooltips */
