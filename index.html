@@ -31,7 +31,7 @@
     })();
     </script>
     
-   <!-- Adding the sound to be heard when a sorting method is clicked --> 
+   <!-- Adding the sound to be heard when a sorting button is clicked --> 
     <script>
 var beep = new Audio();
 beep.src = 'buttonsound.mp3';
@@ -48,18 +48,15 @@ beep.src = 'buttonsound.mp3';
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" onmousedown="buttonsound.play()" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" onmousedown="buttonsound.play()" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" onmousedown="buttonsound.play()" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" onmousedown="buttonsound.play()" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
             </li>
-            <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">All money</a>
-    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">The public's purse</a>
-    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">Split by party</a>
-    <a href="https://p15kons1.github.io/D3js-uk-political-donations/#" onmousedown="beep.play()">Split by type of donor</a>
+            
         </ul>
     </nav>
     
