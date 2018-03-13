@@ -24,7 +24,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3}                 
 	};
 /*PARADOTEO 1 ALLAGI XROMATWN*/
-var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
+var fill = d3.scale.ordinal().range(["#02E6FB", "#22FB02", "#FB02E0"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -391,8 +391,7 @@ function mouseover(d, i) {
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
-
-/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
+	
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
