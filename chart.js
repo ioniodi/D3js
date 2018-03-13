@@ -6,7 +6,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
      
-/*PARADOTEO 1 LINK GIA TO GOOGLE*/
+
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
@@ -23,7 +23,7 @@ var entityCentres = {
 		pub: {x: w / 1.8, y: h / 2.8},
 		individual: {x: w / 3.65, y: h / 3.3}                 
 	};
-/*PARADOTEO 1 ALLAGI XROMATWN*/
+
 var fill = d3.scale.ordinal().range(["#02E6FB", "#22FB02", "#FB02E0"]);  
 
 var svgCentre = { 
@@ -87,7 +87,7 @@ function transition(name) {
 		$("#view-amount-type").fadeOut(250);
 		return fundsType();
 	}
-/*paradoteo 1: new slpit by. This block of code makes view-amount-type to appear, while it hides every other view.*/
+
 	if (name === "group-by-amount"){
 		
 		$("#initial-content").fadeOut(250);
@@ -117,7 +117,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open(GooglePls + d.donor)}); 
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
