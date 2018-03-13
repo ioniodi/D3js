@@ -105,22 +105,22 @@ li {
 /* position of new text of new split by */
 #first {
    left: 120px;
-    top: 500px;
+    top: 140px;
 position: absolute;
 }
 #second{
     left: 550px;
-    top: 500px;
+    top: 140px;
 position: absolute; 
 }
 #third {
    left: 120px;
-    top: 140px;
+    top: 500px;
 position: absolute;
 }
 #last {
     left: 550px;
-    top: 140px;
+    top: 500px;
 position: absolute; 
 }
 
