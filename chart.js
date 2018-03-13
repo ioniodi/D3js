@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#ffbf00", "#40ff00", "#ff00ff"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -366,5 +366,3 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
-

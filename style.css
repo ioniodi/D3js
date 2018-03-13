@@ -63,15 +63,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: #40ff00;
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: #ffbf00;
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: #ff00ff;
     top: 550px;
 }
 
@@ -236,3 +236,63 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     color: rgb(0, 120, 231);
     color: #fff
 }
+
+
+
+
+
+
+
+
+
+#view-history-bar-button {
+    position: absolute;
+    right: -16em;
+    top: 0em;
+}
+#view-by-amount-of-donation {
+    display: none; /* page on load */
+    position: absolute;
+    text-align: center;
+    margin: 0px;
+}
+#view-by-amount-of-donation-title {
+    position: absolute;
+    width: 500px;
+    left: 17em;
+    top: 7em;
+    z-index: 1;
+}
+#first-amount-interval, #second-amount-interval, #third-amount-interval {
+    position: absolute;
+    top: 41em;
+    z-index: 1;
+}
+#first-amount-interval {
+    left: 10em;
+}
+#second-amount-interval {
+    left: 27em;
+}
+#third-amount-interval {
+    left: 47em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
