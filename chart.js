@@ -9,7 +9,7 @@ var radius = d3.scale.sqrt().range([10, 20]);
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3	, y: h / 1.8}
+    lib: {x: w / 3, y: h / 1.8}
   };
 
 var entityCentres = { 
@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#EECADA", "#60E8AD", "#F26183"]); 
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -48,6 +48,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#view-amount").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -57,6 +58,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
+		$("#view-amount").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -65,15 +67,27 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
+		$("#view-amount").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
+		$("#view-amount").fadeOut(250);
 		return fundsType();
+	}
+	if (name === "group-by-amount") {
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-amount").fadeIn(1000);
+		return amountsGroup();
+	}
 	}
 
 function start() {
@@ -92,11 +106,12 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)	//;
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-
+		.on("click", googleSearch);	//activate google search
+	
 		force.gravity(0)
 			.friction(0.75)
 			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
@@ -141,6 +156,15 @@ function fundsType() {
 		.on("tick", types)
 		.start();
 }
+//New function
+function amountsGroup() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", amounts)
+		.start()
+		.colourByParty();
+}
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -171,7 +195,14 @@ function all(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
+//New function
+function amounts(e) {
+	node.each(moveToAmounts(e.alpha))
+		//.each(collide(0.001));
 
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
 
 function moveToCentre(alpha) {
 	return function(d) {
@@ -241,6 +272,27 @@ function moveToFunds(alpha) {
 	};
 }
 
+function moveToAmounts(alpha) {
+	return function(d) {
+		var centreY = svgCentre.y;
+		if (d.value <= 100000) {
+				centreX = svgCentre.x +70;
+				centreY = svgCentre.y -70;
+		} else if (d.value <= 500000) {
+				centreX = svgCentre.x +450;
+				centreY = svgCentre.y -70;
+		} else if (d.value <= 1000000) {
+				centreX = svgCentre.x +70;
+				centreY = svgCentre.y +250;
+		} else {
+				centreX = svgCentre.x +500; 
+				centreY = svgCentre.y +250;
+		}
+		
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;	
+	};
+}
 // Collision detection function by m bostock
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
@@ -315,8 +367,6 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	
-
 
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
@@ -345,17 +395,19 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
+	responsiveVoice.speak("The name of the donor is" + donor + "And the ammount of the donation is " + amount);
 	}
 
 function mouseout() {
 	// no more tooltips
 		var mosie = d3.select(this);
-
+	
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	
+	responsiveVoice.cancel();	
 		}
 
 $(document).ready(function() {
@@ -367,4 +419,8 @@ $(document).ready(function() {
 
 });
 
-
+/* Function which opens google search results for each donor */
+function googleSearch(d) {
+  var donor = d.donor;
+  window.open("https://www.google.com/search?q=" + donor);
+}
