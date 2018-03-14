@@ -1,5 +1,6 @@
 // GLOBALS
 var w = 1000,h = 900;
+var fusrodah = new Audio("whistle.mp3"); 
 var padding = 2;
 var nodes = [];
 var force, node, data, maxVal;
@@ -21,7 +22,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#000000", "#8A2BE2", "#483D8B"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -43,40 +44,65 @@ var comma = d3.format(",.0f");
 
 function transition(name) {
 	if (name === "all-donations") {
+		fusrodah.currentTime=0;
+		fusrodah.play();
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#view-donation-amount").fadeOut(250);
+		
 		return total();
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		fusrodah.currentTime=0;
+		fusrodah.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
+		$("#view-donation-amount").fadeOut(250);
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		fusrodah.currentTime=0;
+		fusrodah.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
+		$("#view-donation-amount").fadeOut(250);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source"){
+		fusrodah.currentTime=0;
+		fusrodah.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
+		$("#view-donation-amount").fadeOut(250);
 		return fundsType();
 	}
-
+	if (name === "group-by-donation-amount"){
+		fusrodah.currentTime=0;
+		fusrodah.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-donation-amount").fadeIn(250);
+		return donationType();
+	}
+}
 function start() {
+	
 
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
@@ -92,7 +118,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+	        .on("click", function(d) {window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -142,6 +169,14 @@ function fundsType() {
 		.start();
 }
 
+function donationType() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", donations)
+		.start();
+}
+
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -158,6 +193,13 @@ function entities(e) {
 
 function types(e) {
 	node.each(moveToFunds(e.alpha));
+
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+function donations(e) {
+	node.each(moveToDonations(e.alpha));
 
 
 		node.attr("cx", function(d) { return d.x; })
@@ -240,6 +282,37 @@ function moveToFunds(alpha) {
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
 }
+
+function moveToDonations(alpha) {
+	return function(d) {
+			var centreX;
+			var centreY;
+		if (d.value >= 10000000) {
+			centreY = 300;
+			centreX = 200;
+				
+		} else if (d.value < 10000000 && d.value>= 1000000) {
+				centreY = 450;
+				centreX = 700;
+				
+		} else if (d.value < 1000000 && d.value >= 500000) {
+				centreY = 600;
+				centreX = 200;
+				
+		} else  if (d.value < 500000 && d.value >= 100000) {
+				centreY = 700;
+				centreX = 750;
+				
+		} else  if (d.value <= maxVal) {
+				centreY = 800;
+				centreX = 200;
+		}
+
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
+	};
+}
+
 
 // Collision detection function by m bostock
 function collide(alpha) {
@@ -344,6 +417,10 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+	
+	
+	var soundx = new SpeechSynthesisUtterance("the Donators name is " + donor + " and the amount of the donation is " + amount + "pounds");
+	window.speechSynthesis.speak(soundx);
 	
 	
 	}
