@@ -1,23 +1,18 @@
-# Οπτικοποίηση δεδομένων χορηγιών (UK)
+Μάθημα: Τεχνολογία Λογισμικού
+Όνομα: Νίκη Καπετανοπούλου
+ΑΜ: Π2013120
 
-Πηγή: [https://github.com/neilhawkins/d3-uk-political-donations](https://github.com/neilhawkins/d3-uk-political-donations)
+Εργασία: Data Visulalization
 
-## Προετοιμασία
-- [x] Δημιουργήστε ένα αντίγραφο (**fork**) του [αποθετηρίου](https://github.com/ioniodi/D3js-uk-political-donations) της εφαρμογής (**αποθετήριο του κώδικα**).
-
-- [x] Ενεργοποιήστε το **Github Pages** στα settings του προσωπικού σας repository και άλλαξτε τον **σύνδεσμο** (**link**) στην κορυφή του αποθετηρίου σας ώστε να δείχνει στην σελίδα της εφαρμογής σας.
-
-Στη συνέχεια να ακολουθήστε τα βήματα που αντιστοιχούν στα παραδοτέα αυτής της εργασίας (βλ. σχετικά ανοικτά [issues](https://github.com/ioniodi/D3js/issues)).
+Αλλαγή χρωμάτων στις μπάλες με τα δεδομένα, καθώς και στα αντίστοιχα 3 πεδία της ομαδοποίησης Split by party.
+https://github.com/Nikikpt/D3js-uk-political-donations/blob/master/chart.js
 
 
-**Προσοχή!!!** Μετά από κάθε αλλαγή που θα κάνετε στο αποθετήριό σας στα πλαίσια των παραδοτέων, ίσως χρειαστεί να περιμένετε κάποιο χρονικό διάστημα, ακόμα και λίγων λεπτών, μετά από κάθε commit μέχρι να εφαρμοστούν οι αλλαγές που έγιναν στον κώδικα.
+Ήχος κάθε φορά που ο χρήστης της εφαρμογής κάνει κλικ σε μία από τις επιλογές/κουμπιά ομαδοποίησης των δεδομένων.
+https://github.com/Nikikpt/D3js-uk-political-donations/blob/master/index.html
 
-## Χρήσιμοι σύνδεσμοι
+Τροποποίηση κώδικα, έτσι ώστε όταν γίνετε κλικ σε κάθε μπάλα να ανοίγει ένα νέο παράθυρο με τα αποτελέσματα της αναζήτησης στο google για τον αντίστοιχο δωρητή.
 
-* [Data Driven Documents](https://d3js.org/)
-* [Github pages](https://pages.github.com/)
-* [Github API: Statistics](https://developer.github.com/v3/repos/statistics/)
-* [Javascript](https://www.javascript.com/)
-* [jQuery](https://jquery.com/)
-* [Ελληνική Στατιστική Αρχή](http://www.statistics.gr/)
-* [Eurostat](http://ec.europa.eu/eurostat/)
+Oμαδοποίηση δεδομένων με split by the amount of donation.
+https://github.com/Nikikpt/D3js-uk-political-donations/blob/master/chart.js
+
