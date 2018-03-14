@@ -5,6 +5,9 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+//fdglkjfgjlkfdjgsindesmos
+//var sindesmos = "http://www.google.com/search?q=";
+
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -21,7 +24,9 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+// allagi xromaton stis mpales
+
+var fill = d3.scale.ordinal().range(["#A92330", "#787375", "#F19EB8"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -68,6 +73,7 @@ function transition(name) {
 		return donorType();
 	}
 	if (name === "group-by-money-source")
+	{
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -75,6 +81,19 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+
+if (name === "group-by-amount"){
+		sound.currentTime=0; 
+		sound.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
+		return amountType();
+	}
+}	
 
 function start() {
 
@@ -93,6 +112,9 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
+	       // .on("click", function(d) { window.open(sindesmos + d.donor)});
+	//!!!!!!sindesi selidas!!!! 
+		//.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -114,6 +136,14 @@ function total() {
 		.friction(0.9)
 		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.8; })
 		.on("tick", all)
+		.start();
+}
+
+function amountType() {
+	force.gravity(0)
+		.friction(0.85)
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.on("tick", amounts)
 		.start();
 }
 
@@ -141,6 +171,15 @@ function fundsType() {
 		.on("tick", types)
 		.start();
 }
+
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+
+
 
 function parties(e) {
 	node.each(moveToParties(e.alpha));
@@ -344,6 +383,11 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+	
+	//!!!! dimiourgia omilias!!!!
+	var omilia = new SpeechSynthesisUtterance("Donators name is " + donor + " and the donation amount is " + amount + " pounds");
+	window.speechSynthesis.speak(omilia);
+
 	
 	
 	}
