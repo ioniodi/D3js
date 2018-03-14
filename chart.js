@@ -1,3 +1,4 @@
+@@ -1,27 +1,27 @@
 // GLOBALS
 var w = 1000,h = 900;
 var padding = 2;
@@ -22,6 +23,7 @@ var entityCentres = {
 	};
 
 var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#60BF00", "#0060BF", "#6000BF"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -75,6 +77,15 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+        if (name === "group-by-amount-of-donation")
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeIn(1000);
+                $("#view-amount-type").fadeIn(250);
+                return donationType();
+		
 
 function start() {
 
@@ -93,6 +104,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
+	         .on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
