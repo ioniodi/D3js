@@ -401,7 +401,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	responsiveVoice.speak(donor + " " + amount + "£","UΚ English Μale",{volume: 1});
+	responsiveVoice.speak(donor + " " + amount + "£","UΚ English Μale",{volume: 2});
 	}
 
 function mouseout() {
