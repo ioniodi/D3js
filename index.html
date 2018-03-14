@@ -31,10 +31,7 @@
     })();
     </script>
 </head>
-<script>
-        var sound1 = new Audio();
-        sound1.src = "sound1.mp3";
-    </script>
+
 
 
 <body>
@@ -44,7 +41,11 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" onmousedown="sound1.play() "role="button"  class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" <script>
+        var sound1 = new Audio();
+        sound1.src = "sound1.mp3";
+            </script>
+        onmousedown="sound1.play() "role="button"  class="pure-button switch" id="all-donations">All money</a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
