@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color:#f9ffe6;
     font-family:'Raleway', 'Open Sans', sans-serif;
 }
 p {
@@ -26,7 +26,8 @@ li {
 }
 
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type {
+
+#view-party-type, #view-donor-type, #view-source-type, {
     display: none;
 }
 
@@ -39,6 +40,9 @@ li {
     left: 650px;
     width: 272px;
 }
+ 
+
+
 
 /*  Public or private funds view */
 
@@ -63,15 +67,15 @@ li {
 /*  Party view */
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: rgba(160,157,158, 0.8); /*allagi xromatos sto pedio conservative*/
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: rgba(220,87,99, 0.8); /*allagi xromatos sto pedio labour*/
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: rgba(248,206,219, 0.8); /*allagi xromatos sto pedio libdem */
     top: 550px;
 }
 
