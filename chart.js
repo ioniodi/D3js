@@ -351,8 +351,6 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
-	}
 
 responsiveVoice.speak(donor + " " + amount + "£","UK English Male",{volume: 1});
 	}
@@ -365,6 +363,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
