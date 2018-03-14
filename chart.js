@@ -9,7 +9,7 @@ var radius = d3.scale.sqrt().range([10, 20]);
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3	, y: h / 1.8}
+    lib: {x: w / 3, y: h / 1.8}
   };
 
 var entityCentres = { 
@@ -21,7 +21,9 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+// allagi color scale stis mpales
+
+var fill = d3.scale.ordinal().range(["#A21313","#000000","#808080"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -92,7 +94,9 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		// !!! google search the donor !!!
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -346,12 +350,15 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
+	var donatorsname = new SpeechSynthesisUtterance("Donator's name is " + donor + " and the donation amount is " + amount + " pounds");
+	window.speechSynthesis.speak(donatorsname);
+	
+	
 	}
 
 function mouseout() {
 	// no more tooltips
 		var mosie = d3.select(this);
-
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
@@ -366,5 +373,6 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
+
 
 
