@@ -32,7 +32,7 @@
     </script>
 </head>
 <script>
-var sound1 = new Audio("https://github.com/vissarionvagg/D3js-uk-political-donations/blob/master/sound1.mp3") ;
+var audio = new Audio("https://github.com/vissarionvagg/D3js-uk-political-donations/blob/master/sound1.mp3") ;
 
 audio.oncanplaythrough = function(){
 audio.play();
@@ -55,7 +55,7 @@ audio.play();
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button"  class="pure-button switch" onclick="sound1.play()" id="all-donations">All money </a>
+            <li><a href="#" role="button"  class="pure-button switch" onclick="audio.play()" id="all-donations">All money </a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
