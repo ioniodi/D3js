@@ -32,9 +32,20 @@
     </script>
 </head>
 <script>
-        var sound1 = new Audio();
-        sound1.src = "sound1.mp3";
+var sound1 = new Audio() ;
+
+audio.oncanplaythrough = function(){
+audio.play();
+}
+
+audio.loop = true;
+
+audio.onended = function(){
+audio.play();
+}
+
 </script>
+
 
 
 <body>
