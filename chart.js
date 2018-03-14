@@ -22,6 +22,7 @@ var entityCentres = {
 	};
 
 var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#CF4000", "#40CF00", "#00CF40"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -75,6 +76,14 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+if (name === "group-by-amount")
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeIn(1000);
+                $("#view-amount-type").fadeIn(1250);
+                return amountType();
 
 function start() {
 
