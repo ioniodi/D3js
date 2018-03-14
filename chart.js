@@ -96,6 +96,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
+		.on("click",search);
 
 		force.gravity(0)
 			.friction(0.75)
@@ -307,6 +308,11 @@ function display(data) {
 	return start();
 }
 
+function search(d) { //search function 
+	var donor=d.donor;
+	window.open("https://www.google.com/search?q=" + donor);
+}
+
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -346,6 +352,9 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
+	}
+
+responsiveVoice.speak(donor + " " + amount + "£","UK English Male",{volume: 1});
 	}
 
 function mouseout() {
