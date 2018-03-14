@@ -30,6 +30,19 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+    <audio id="sound" src="handbag-lock-7.wav"></audio>
+    <a onclick = "playSound();"></a>
+    
+    
+   <script>
+        function playSound() {
+          var sound = document.getElementById("sound");
+          sound.play();
+      }  
+        
+    </script>
+    
 </head>
 <!-- Add feature detection and noscript -->
 
@@ -40,13 +53,13 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="playSound();" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="playSound();" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="playSound();" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="playSound();" id="group-by-donor-type">Split by type of donor</a>
             </li>
         </ul>
     </nav>
