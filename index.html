@@ -15,11 +15,15 @@
     <meta property="og:image:height" content="200" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
+    
+    <!-- import from responcivevoice.org for non-commercial use -->
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
     <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-44807543-1']);
     _gaq.push(['_trackPageview']);
+    var beep = new Audio("beep-07");
 
     (function() {
         var ga = document.createElement('script');
@@ -47,6 +51,8 @@
             <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            </li>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount">Split by amount</a>
             </li>
         </ul>
     </nav>
@@ -165,6 +171,18 @@
                             <strong>39%</strong>
                         </p>
             </div>
+
+          <div id = "view-amount">
+            <div id="div_0_1500">
+                <p> 0-150000 </p>
+            </div>
+            <div id="div_1500_5500">
+                <p>  150000-550000 </p>
+            </div>
+            <div id="div_more_5500">
+                <p>  more than 550000 </p>
+            </div>
+            
             <div id="company">
                 <h5>Companies</h5>
                 <strong>Total: &#163; 17,052,129

@@ -5,6 +5,9 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+// beep on click. Instructions found at: https://www.youtube.com/watch?v=VlwSz2dXK_8
+var beep = new Audio();
+beep.src="beep-07.mp3";
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -21,7 +24,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#3a80f2", "#032459", "#10b72c"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -43,6 +46,8 @@ var comma = d3.format(",.0f");
 
 function transition(name) {
 	if (name === "all-donations") {
+		beep.currentTime = 0;
+		beep.play();
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
@@ -52,6 +57,8 @@ function transition(name) {
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		beep.currentTime = 0;
+		beep.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -60,6 +67,8 @@ function transition(name) {
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		beep.currentTime = 0;
+		beep.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
@@ -67,7 +76,22 @@ function transition(name) {
 		$("#view-donor-type").fadeIn(1000);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+
+	if (name === "group-by-amount") {
+		beep.currentTime = 0;
+		beep.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
+		return amountType();
+	}
+		
+	if (name === "group-by-money-source") {
+		beep.currentTime = 0;
+		beep.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -75,6 +99,7 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+}
 
 function start() {
 
@@ -92,7 +117,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open('https://google.com/search?q=' + d.donor)}); 
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -142,6 +168,16 @@ function fundsType() {
 		.start();
 }
 
+// created in analogy of the other 4 tabs
+function amountType() {
+	
+	force.gravity(0)
+		.friction(0.85)
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.on("tick", amounts)
+		.start();
+}
+
 function parties(e) {
 	node.each(moveToParties(e.alpha));
 
@@ -163,6 +199,14 @@ function types(e) {
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
 }
+
+function amounts(e) {
+	node.each(moveToAmount(e.alpha));
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+}
+
 
 function all(e) {
 	node.each(moveToCentre(e.alpha))
@@ -236,6 +280,30 @@ function moveToFunds(alpha) {
 			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+// created in analogy to other 4 similar functions
+function moveToAmount(alpha) {
+	return function(d) {
+		var centreX;
+		var centreY;
+		if (d.value <= 500000){
+			centreX = svgCentre.x +70;
+			centreY = svgCentre.y -70;
+		} else if (d.value <= 5000000){
+			centreX = svgCentre.x +450;
+			centreY = svgCentre.y -70;
+		} else if (d.value <= 10000000){
+			centreX = svgCentre.x +70;
+			centreY = svgCentre.y +250;
+		} else {
+			centreX = svgCentre.x +500;
+			centreY = svgCentre.y +250;
+		}
+		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
@@ -344,7 +412,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
+	responsiveVoice.speak(donor + "donated" + amount + "pounds");
 	
 	}
 
@@ -356,6 +424,7 @@ function mouseout() {
 
 		d3.select(".tooltip")
 			.style("display", "none");
+	responsiveVoice.cancel();
 		}
 
 $(document).ready(function() {
@@ -366,5 +435,3 @@ $(document).ready(function() {
     return d3.csv("data/7500up.csv", display);
 
 });
-
-
