@@ -145,8 +145,8 @@ li {
 #f { top: 648px; left: 575px; }
 
 div1 {
-    width: 300px;
-    border: 25px solid green;
+    width: 500px;
+    border: 10px solid green;
     padding: 25px;
     margin: 25px;
 }
