@@ -144,6 +144,13 @@ li {
 #e { top: 435px;}
 #f { top: 648px; left: 575px; }
 
+div {
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+
 /* End of view */
 
 circle {
