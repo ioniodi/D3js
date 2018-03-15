@@ -82,8 +82,8 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeIn(1000);
-                $("#view-amount-type").fadeIn(250);
+		$("#view-source-type").fadeOut(250);
+                $("#view-amount-type").fadeIn(1000);
                 return donationType();
 		
 
