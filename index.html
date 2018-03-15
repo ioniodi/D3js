@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <script>
+        var sound = new Audio();
+        sound.src = "sound.mp3";
+    </script>
 
     <meta charset="utf-8">
     <title>Who's funding the big three?</title>
@@ -40,13 +44,13 @@
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#"  role="button" class="pure-button switch" onclick="sound.play()" id="all-donations">All money</a>          
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="sound.play()" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="sound.play()"id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" onclick="sound.play()" id="group-by-donor-type">Split by type of donor</a>
             </li>
         </ul>
     </nav>
