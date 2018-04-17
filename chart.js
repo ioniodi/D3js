@@ -368,11 +368,20 @@ function display(data) {
 
 var historyBarSize=10;
 var imageFile;
-var historyBarElement = document.getElementById("view-history-bar");
+var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
 
 
-function updateHistoryBar(d, imageFile, amount) {}
+function updateHistoryBar(d, imageFile) {
+    var newHistory = new Image(50, 50);
+    newHistory.src = imagePath;
+    newHistory.style.margin = "3px";
+    newHistory.style.border = "2px solid black";
+    newHistory.style.borderRadius = "4px";
+    newHistory.onclick = function () {
+        window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
+    };
+}
 
 function mouseover(d, i) {
 	// tooltip popup
