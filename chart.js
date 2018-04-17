@@ -372,17 +372,6 @@ var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
 
 
-function updateHistoryBar(d, imageFile) {
-    var newHistory = new Image(50, 50);
-    newHistory.src = imagePath;
-    newHistory.style.margin = "3px";
-    newHistory.style.border = "2px solid black";
-    newHistory.style.borderRadius = "4px";
-    newHistory.onclick = function () {
-        window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
-    };
-}
-
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -398,7 +387,7 @@ function mouseover(d, i) {
 	imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
 	
-	
+	updateHistoryBar(d,imageFile);
 	// *******************************************
 	
 	
@@ -424,6 +413,18 @@ function mouseover(d, i) {
 	
 	
 	}
+
+
+function updateHistoryBar(d, imageFile) {
+    var newHistory = new Image(50, 50);
+    newHistory.src = imagePath;
+    newHistory.style.margin = "3px";
+    newHistory.style.border = "2px solid black";
+    newHistory.style.borderRadius = "4px";
+    newHistory.onclick = function () {
+        window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
+    };
+}
 
 function mouseout() {
 	// no more tooltips
