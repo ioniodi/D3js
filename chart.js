@@ -4,6 +4,10 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+var historyBarSize=10;
+var imgFile;
+var historyBarElement = document.getElementById("history-bar");
+var newElement = document.createElement("img");
 var clickSound = new Audio();
 clickSound.src = "assets/Button_Push.wav";
 
@@ -366,10 +370,7 @@ function display(data) {
 	return start();
 }
 
-var historyBarSize=10;
-var imageFile;
-var historyBarElement = document.getElementById("history-bar");
-var newElement = document.createElement("img");
+
 
 
 function mouseover(d, i) {
@@ -384,7 +385,7 @@ function mouseover(d, i) {
 	
 
 	// image url that want to check
-	imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+	imgFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
 	
 	updateHistoryBar(d,imageFile);
@@ -417,7 +418,7 @@ function mouseover(d, i) {
 
 function updateHistoryBar(d, imageFile) {
     var newHistory = new Image(50, 50);
-    newHistory.src = imagePath;
+    newHistory.src = imgFile;
     newHistory.style.margin = "3px";
     newHistory.style.border = "2px solid black";
     newHistory.style.borderRadius = "4px";
