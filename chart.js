@@ -425,6 +425,7 @@ function updateHistoryBar(d, imageFile) {
     newHistory.onclick = function () {
         window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
     };
+    newElement.appendChild(newHistory);
 }
 
 function mouseout() {
