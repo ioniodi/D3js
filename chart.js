@@ -403,7 +403,7 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	responsiveVoice.speak("The donor        " + d.donor + "       has donated an amount of     " + d.amount + "       british pounds");
+	responsiveVoice.speak("The donor        " + d.donor + "       has donated an amount of  " + d.value + "   british pounds");
 	
 	
 	}
@@ -413,7 +413,7 @@ function mouseout() {
 		var mosie = d3.select(this);
 
 		mosie.classed("active", false);
-
+		responsiveVoice.cancel()
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
