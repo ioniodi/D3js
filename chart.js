@@ -366,6 +366,14 @@ function display(data) {
 	return start();
 }
 
+var historyBarSize=10;
+var imageFile;
+var historyBarElement = document.getElementById("view-history-bar");
+var newElement = document.createElement("img");
+
+
+function updateHistoryBar(d, imageFile, amount) {}
+
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -375,11 +383,11 @@ function mouseover(d, i) {
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
 	
-
+	
 
 	// image url that want to check
-	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-
+	imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+	
 	
 	
 	// *******************************************
