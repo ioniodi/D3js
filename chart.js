@@ -5,7 +5,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 var historyBarSize=10;
-var imgFile;
+var imgFile,historyBarItemsCounter;
 var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
 var histTooltip = d3.select("body").append("div").attr("id", "histTooltip");
@@ -438,6 +438,14 @@ function updateHistoryBar(d, imageFile) {
         // responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
     };
     newElement.appendChild(newHistory);
+    
+    
+    if (historyBarItemsCounter >= historyBarSize) {
+        historyBarElement.removeChild(historyBarElement.childNodes[sizeOfHistoryBar - 1]); //remove last image
+    } else {
+        historyBarItemsCounter = historyBarItemsCounter + 1;
+    }
+    historyBarElement.insertBefore(newHistory, historyBarElement.childNodes[0]); //append new image
 }
 
 function mouseout() {
