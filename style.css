@@ -153,6 +153,20 @@ div1 {
 
 /* End of view */
 
+div#view-history-bar {
+    position: fixed;
+    width: 60px;
+    height: 507px;
+    right: 1%;
+    top: 18.5%;
+    margin: 0;
+    padding: 0;
+    border: 3px solid rgba(50, 10, 0, 0.7);
+    box-shadow: 0px 0px 10px rgba(20, 20, 20, 0.7);
+    background-color: #FFFFFF;
+    z-index: 3;
+}
+
 circle {
     stroke: rgba(238, 238, 238, 1);
     stroke-width: 0.5;
