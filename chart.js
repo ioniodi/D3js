@@ -8,6 +8,7 @@ var historyBarSize=10;
 var imgFile;
 var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
+var histTooltip = d3.select("body").append("div").attr("id", "histTooltip");
 var clickSound = new Audio();
 clickSound.src = "assets/Button_Push.wav";
 
@@ -424,6 +425,17 @@ function updateHistoryBar(d, imageFile) {
     newHistory.style.borderRadius = "4px";
     newHistory.onclick = function () {
         window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
+    };
+    newHistory.onmouseover = function (event) {
+        var pageX = event.clientX;
+        var pageY = event.clientY;
+        newHistory.style.boxShadow = "0 0 2px 1px rgba(50, 140, 186, 0.7)";
+        d3.select("#histTooltip")
+            .style("opacity", 0.9)
+            .html(d.donor)
+            .style("left", pageX-170 +"px")
+            .style("top", pageY +"px");
+        // responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
     };
     newElement.appendChild(newHistory);
 }
