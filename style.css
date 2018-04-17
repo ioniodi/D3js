@@ -143,6 +143,7 @@ div#history-bar {
     position: fixed;
     width: 507px;
     height: 60px;
+    right:30px;
     bottom: 30px;
     margin: 0;
     padding: 0;
