@@ -388,7 +388,7 @@ function mouseover(d, i) {
 	imgFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
 	
-	updateHistoryBar(d,imageFile);
+	updateHistoryBar(d,imgFile);
 	// *******************************************
 	
 	
