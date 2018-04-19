@@ -50,6 +50,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-by-donor-amount").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		return total();
 		//location.reload();
@@ -60,6 +61,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-by-donor-amount").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
 		return partyGroup();
 	}
@@ -69,6 +71,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-by-donor-amount").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
 		return donorType();
 	}
@@ -78,20 +81,33 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-by-donor-amount").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();	
 	}
-	if (name === "group-by-donor-amount")
+	if (name === "group-by-donor-amount"){
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeOut(250);
 		$("#view-by-donor-amount").fadeIn(1000);
 		return amountType();
 		
 	}
-	
+	if (name === "group-by-donor-amount-bar"){
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-by-donor-amount").fadeOut(250);
+		$("#view-by-donor-amount-bar").fadeIn(1000);
+		return amountTypeBar();
+		
+	}
+}	
 
 function start() {
 
@@ -127,7 +143,8 @@ function start() {
 }
 
 function total() {
-
+$('#chart').css('display','block');
+	$('#chart2').css('display','none');
 	force.gravity(0)
 		.friction(0.9)
 		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.8; })
@@ -136,6 +153,8 @@ function total() {
 }
 
 function partyGroup() {
+	$('#chart').css('display','block');
+	$('#chart2').css('display','none');
 	force.gravity(0)
 		.friction(0.8)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
@@ -145,6 +164,8 @@ function partyGroup() {
 }
 
 function donorType() {
+	$('#chart').css('display','block');
+	$('#chart2').css('display','none');
 	force.gravity(0)
 		.friction(0.8)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
@@ -153,6 +174,8 @@ function donorType() {
 }
 
 function fundsType() {
+	$('#chart').css('display','block');
+	$('#chart2').css('display','none');
 	force.gravity(0)
 		.friction(0.75)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
@@ -161,11 +184,110 @@ function fundsType() {
 }
 
 function amountType() {
+	$('#chart').css('display','block');
+	$('#chart2').css('display','none');
 	force.gravity(0)
 		.friction(0.75)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", amounter)
 		.start();
+}
+
+function amountTypeBar() {
+	
+	$('#chart').css('display','none');
+	$('#chart2').css('display','block');
+
+	$('#chart2').html('');
+	
+	var margin = {top: 40, right: 20, bottom: 30, left: 200},
+    width = 1000 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
+
+	var formatPercent = d3.format("100");
+
+	var x = d3.scale.ordinal()
+		.rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+		.range([height, 0]);
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left")
+		.tickFormat(formatPercent);
+
+	var tip = d3.tip()
+	  .attr('class', 'd3-tip')
+	  .offset([-10, 0])
+	  .html(function(d) {
+		return "<strong>Amount:</strong> <span style='color:red'>" + d.amount + "</span>";
+	  })
+
+	var svg = d3.select("#chart2").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	svg.call(tip);
+
+	var data =  
+	
+	d3.csv("data/7500up.csv", type, function(error, data) {
+	  x.domain(data.map(function(d) { 
+		  if(d.amount > 10000000){
+			  return d.donor;
+		  }else{
+			  d.donor = 'rest';
+			  return d.donor;
+		  }
+	   }));
+	  y.domain([0, d3.max(data, function(d) { 
+		  if(d.amount > 10000000){
+			  return d.amount;
+		  }else{
+			  
+			  
+			  return d.amount;
+		  }
+	   })]);
+
+	  svg.append("g")
+		  .attr("class", "x axis")
+		  .attr("transform", "translate(0," + height + ")")
+		  .call(xAxis);
+
+	  svg.append("g")
+		  .attr("class", "y axis")
+		  .call(yAxis)
+		.append("text")
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .text("Amount");
+
+	  svg.selectAll(".bar")
+		  .data(data)
+		.enter().append("rect")
+		  .attr("class", "bar")
+		  .attr("x", function(d) { return x(d.donor); })
+		  .attr("width", x.rangeBand())
+		  .attr("y", function(d) { return y(d.amount); })
+		  .attr("height", function(d) { return height - y(d.amount); })
+		 
+
+	});
+	return;
+}
+function type(d) {
+  d.amount = +d.amount;
+  return d;
 }
 
 function amounter(e) {

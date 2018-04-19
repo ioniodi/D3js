@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700">
 	<link rel="stylesheet" href="https://css-tricks.github.io/AnythingZoomer/css/anythingzoomer.css">
+	
 
     <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -75,6 +76,8 @@
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type" onmousedown="callTheSound()">Split by type of donor</a>
             </li>
 			<li><a href="#" role="button" class="pure-button switch" id="group-by-donor-amount" onmousedown="callTheSound()">Split by amount of donor</a>
+            </li>
+			<li><a href="#" role="button" class="pure-button switch" id="group-by-donor-amount-bar" onmousedown="callTheSound()">Split by amount of donor bar</a>
             </li>
         </ul>
     </nav>
@@ -265,6 +268,10 @@
                         
             </div>
         </div>
+		<div id="group-by-donor-amount-bar" style="display:none;">
+		</div>
+		
+		
     </div>
 	<div style="float: right; width: 15%; box-shadow: 3px 3px 2px 3px #888888;" >
 		
@@ -275,6 +282,7 @@
 	
 	</div>
     <div id="chart"></div>
+	<div id="chart2"></div>
 	
 
 
@@ -283,6 +291,7 @@
     window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"><\/script>')
     </script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	
     <script src="chart.js"></script>
 	<script src="app.js"></script>
@@ -305,6 +314,8 @@
 
 		  });
 	</script>
+	
+	
 </body>
 
 </html>
