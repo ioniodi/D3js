@@ -4,7 +4,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-var historyBarSize=10;
+var historyBarSize=7;
 var imgFile,historyCounter;
 var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
@@ -418,7 +418,7 @@ function mouseover(d, i) {
 
 
 function updateHistoryBar(d, imageFile) {
-    var newHistory = new Image(50, 50);
+    var newHistory = new Image(45, 45);
     newHistory.src = imgFile;
     newHistory.style.margin = "3px";
     newHistory.style.border = "2px solid black";
@@ -434,7 +434,7 @@ function updateHistoryBar(d, imageFile) {
             .style("opacity", 0.9)
             .html(d.donor)
             .style("left", pageX-170 +"px")
-            .style("top", pageY +"px");
+            .style("bottom", pageY +"px");
         responsiveVoice.speak("The donor        " + d.donor + "       has donated an amount of  " + d.value + "   british pounds");
 	
     };
