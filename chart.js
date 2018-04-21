@@ -4,7 +4,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-var historyBarSize=7;
+var historyBarSize=9;
 var imgFile;
 var historyCounter=0;
 var historyBarElement = document.getElementById("history-bar");
@@ -419,7 +419,7 @@ function mouseover(d, i) {
 
 
 function updateHistoryBar(d, imageFile) {
-    var newHistory = new Image(45, 45);
+    var newHistory = new Image(42, 50);
     newHistory.src = imgFile;
     newHistory.style.margin = "3px";
     newHistory.style.border = "2px solid black";
