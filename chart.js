@@ -5,7 +5,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 var historyBarSize=10;
-var imgFile,historyBarItemsCounter;
+var imgFile,historyCounter;
 var historyBarElement = document.getElementById("history-bar");
 var newElement = document.createElement("img");
 var histTooltip = d3.select("body").append("div").attr("id", "histTooltip");
@@ -423,7 +423,7 @@ function updateHistoryBar(d, imageFile) {
     newHistory.style.margin = "3px";
     newHistory.style.border = "2px solid black";
     newHistory.style.borderRadius = "4px";
-    newHistory.onclick = function () {
+    newHistory.onclick = function () {//kanei search sto google to donor name
         window.open("https://www.google.gr/search?client=ubuntu&hs=ieJ&channel=fs&dcr=0&ei=2aCdWuT6JIWxsAG4uq_ABw&q=" + d.donor);
     };
     newHistory.onmouseover = function (event) {
@@ -435,17 +435,18 @@ function updateHistoryBar(d, imageFile) {
             .html(d.donor)
             .style("left", pageX-170 +"px")
             .style("top", pageY +"px");
-        // responsiveVoice.speak(":" + d.donor + ": with total value :" + comma(amount) + " pounds");
+        responsiveVoice.speak("The donor        " + d.donor + "       has donated an amount of  " + d.value + "   british pounds");
+	
     };
     newElement.appendChild(newHistory);
     
     
-    if (historyBarItemsCounter >= historyBarSize) {
-        historyBarElement.removeChild(historyBarElement.childNodes[sizeOfHistoryBar - 1]); //remove last image
+    if (historyCounter >= historyBarSize) {
+        historyBarElement.removeChild(historyBarElement.childNodes[historyBarSize - 1]); //afairesh eikonas
     } else {
-        historyBarItemsCounter = historyBarItemsCounter + 1;
+        historyCounter = historyCounter + 1;
     }
-    historyBarElement.insertBefore(newHistory, historyBarElement.childNodes[0]); //append new image
+    historyBarElement.insertBefore(newHistory, historyBarElement.childNodes[0]); //kanei append thn nea eikona
 }
 
 function mouseout() {
