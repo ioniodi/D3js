@@ -1,4 +1,5 @@
 // GLOBALS
+var music= new Audio ("Tiny Button Push-SoundBible.com-513260752.mp3");
 var w = 1000,h = 900;
 var padding = 2;
 var nodes = [];
@@ -21,7 +22,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#000000", "#660066", "#660033"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -43,6 +44,8 @@ var comma = d3.format(",.0f");
 
 function transition(name) {
 	if (name === "all-donations") {
+		music.currentTime=0;
+		music.play();
 		$("#initial-content").fadeIn(250);
 		$("#value-scale").fadeIn(1000);
 		$("#view-donor-type").fadeOut(250);
@@ -52,6 +55,8 @@ function transition(name) {
 		//location.reload();
 	}
 	if (name === "group-by-party") {
+		music.currentTime=0;
+		music.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -60,6 +65,8 @@ function transition(name) {
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
+		music.currentTime=0;
+		music.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
@@ -67,7 +74,9 @@ function transition(name) {
 		$("#view-donor-type").fadeIn(1000);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source") {
+		music.currentTime=0;
+		music.play();
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
@@ -75,6 +84,7 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+}
 
 function start() {
 
@@ -92,7 +102,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", function(d) { window.open("http://www.google.com/search?q=" + d.donor);});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -344,6 +355,8 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
+			var message = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount that he gave is " + amount + " british pounds");
+    window.speechSynthesis.speak(message);
 	
 	
 	}
@@ -357,6 +370,7 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
