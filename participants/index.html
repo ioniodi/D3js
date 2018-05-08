@@ -714,10 +714,38 @@ anime.timeline({loop: true})
   <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
   <!-- >>>>>>>>>>>>>>>>>>>>>>> Position #048 starting... >>>>>>>>>>>>>>>>>>>>>>> -->
   <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-  <div style="width: fit-content; float: left; margin: 10px 10px 10px 10px;">
-        <p>&nbsp;Position #048&nbsp;</p>
-        <p>&nbsp;Put your content!&nbsp;</p>
+  <div style="border: 2px solid; border-radius: 5px; background-color: #4267B2; width: fit-content; float: left; margin: 10px 10px 10px 10px;">
+      <h4>
+        <span>&nbsp;</span>
+        <img src="https://avatars2.githubusercontent.com/u/22668228?s=460&v=4" height="42" width="42">  
+        <span class="ml1"><span class="line">&nbsp;p15verg&nbsp;</span></span>
+      </h4>
   </div>
+  
+  <script>
+  // Wrap every letter in a span
+  $('.ml1 .line').each(function(){
+    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+  });
+   
+   anime.timeline({loop: true}) 
+    .add({
+    targets: '.ml1 .line',
+    scale: [0,1],
+    opacity: [0,1],
+    easing: "easeInElastic",
+    duration: 2500,
+    delay: function(el, i, l) {
+      return 1000 * (i+2);
+    }
+  }).add({
+    targets: '.ml1 .line',
+    opacity: 0,
+    duration: 2250,
+    easing: "easeInCubic",
+    delay: 1100
+  });    
+  </script> 
   <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
   <!-- <<<<<<<<<<<<<<<<<<<<<<< ...Position #048 ending <<<<<<<<<<<<<<<<<<<<<<< -->
   <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
