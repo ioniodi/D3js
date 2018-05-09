@@ -20,7 +20,6 @@
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-44807543-1']);
     _gaq.push(['_trackPageview']);
-
     (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
@@ -36,17 +35,25 @@
 <body>
 
     <header role="banner" id="title">
-        <h1>Who's funding the big three?</h1>
+        <h1>Who's founding the big three?</h1>
     </header>
-    <nav role="navigation">
+    
+    <!-- Add sound for the navigation buttons, //I added the ( onclick="sound.play()" ) command for each button and also for the new group:group by donation amount -->
+    <script>		
+        var sound = new Audio("sound.mp3"); 
+    </script>
+    
+    <nav role="navigation"> 
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" onclick="sound.play()" role="button" class="pure-button switch" id="all-donations">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" onclick="sound.play()" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" onclick="sound.play()" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" onclick="sound.play()" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            </li>
+            <li><a href="#" onclick="sound.play()" role="button" class="pure-button switch" id="group-by-donation-amount">Split by the amount of the donation</a> 
             </li>
         </ul>
     </nav>
@@ -69,19 +76,19 @@
                 <p>&#8212;UK average salary</p>
             </div>
             <div id="a">
-                <strong>&#163;25k &#8212;</strong>
+                <p><strong>&#163;25k &#8212;</strong>
             </div>
             <div id="b">
-                <strong>&#163;50k &#8212;</strong>
+                <p><strong>&#163;50k &#8212;</strong>
             </div>
             <div id="c">
-                <strong>&#163;100k &#8212;</strong>
+                <p><strong>&#163;100k &#8212;</strong>
             </div>
             <div id="d">
-                <strong>&#163;500k &#8212;</strong>
+                <p><strong>&#163;500k &#8212;</strong>
             </div>
             <div id="e">
-                <strong>&#163;1m &#8212;</strong>
+                <p><strong>&#163;1m &#8212;</strong>
             </div>
         </div>
         <!-- End initial-->
@@ -198,16 +205,59 @@
                         </p>
             </div>
         </div>
+     <!-- Ι created a new group:Split by the amount of donation -->
+        <div id="view-donation-amount">
+          <h3> Split by the amount of the donation </h3>
+              <div id="amounts-scale">
+                    <div id="first">
+                          <p><strong>Donations over &#163;1m </strong></p>
+                    </div>
+                    <div id="second">
+                          <p><strong>Donations over &#163;500k </strong></p>
+                    </div>
+                    <div id="third">
+                          <p><strong>Donations over &#163;100k</strong></p>
+                    </div>
+                    <div id="fourth">
+                    <p><strong>Donations over &#163;50k </strong></p>
+                    </div>
+                    <div id="fifth">
+                    <p><strong>Donations over &#163;25k </strong></p>
+                    </div>
+                    <div id="sixth">
+                    <p><strong>Donations under &#163;25k </strong></p>
+                    </div>  
+              </div>
+</div>    
+     <!-- sidebar for images -->
+<div id="sidebar">
+</div>
+        
     </div>
     <div id="chart"></div>
-
-
+    
+    
+    
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
     <script src="chart.js"></script>
+    
+<!-- Now the paragraphs can be magnified-->
+    <script>                            
+        $("p").addClass("zoom");
+        $("h1").addClass("zoom");
+        $("h2").addClass("zoom");
+        $("h3").addClass("zoom");
+        $("h4").addClass("zoom");       
+        $("h5").addClass("zoom");
+        $("nav").addClass("zoom");
+    </script>    
+<!-- Δήλωση βιβλιοθήκης responsiveVoice  -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
 </body>
 
 </html>

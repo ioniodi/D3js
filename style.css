@@ -40,6 +40,8 @@ li {
     width: 272px;
 }
 
+
+
 /*  Public or private funds view */
 
 #public-or-private-money {
@@ -60,18 +62,18 @@ li {
     left: 610px;
 }
 
-/*  Party view */
+/*  Party view, Για να έχω διαφορετικά χρώματα στα 3 πεδία της ομαδοποίησης split by party έκανα εδώ τις αλλαγές */ 
 #conservative, #labour, #libdem { padding: 10px; }
 #conservative {
-    background: rgba(8, 127, 189, 0.2);
+    background: rgba(254, 152, 20, 0.3); /*I changed it from (8, 127, 189, 0.2) , the purple one now */
     top: 110px;
 }
 #labour {
-    background: rgba(240, 34, 51, 0.2);
+    background: rgba(88, 192, 182, 0.3); /*I changed it from (240, 34, 51, 0.2), the light-blue one now*/
     top: 330px;
 }
 #libdem {
-    background: rgba(253, 187, 48, 0.2);
+    background: rgba(255, 87, 210, 0.3); /* I changed it from (253, 187, 48, 0.2), the orange one now */
     top: 550px;
 }
 
@@ -158,7 +160,7 @@ circle.active {
     fill: #FDBB30;
 }
 .con {
-    fill: #087FBD;
+    fill: #C9C945;
 }
 .snp {
     fill: #C9C945;
@@ -219,6 +221,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     -ms-transition: 0.1s linear box-shadow;
     -o-transition: 0.1s linear box-shadow;
     transition: 0.1s linear box-shadow;
+   
 }
 .pure-button-hover, .pure-button:hover, .pure-button:focus {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);
@@ -235,4 +238,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 .pure-button-active, .pure-button:active {
     color: rgb(0, 120, 231);
     color: #fff
-}
+/* I created a new class for the Magnifier */
+.zoom:hover {
+    font-size: large; 
+} 
