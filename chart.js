@@ -62,7 +62,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		onclick="audio.play()";
+		onclick=audio.play();
 		return total();
 		//location.reload();
 	}
@@ -72,7 +72,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
-		onclick="audio.play()";
+		onclick=audio.play();
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -81,7 +81,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
-		onclick="audio.play()";
+		onclick=audio.play();
 		return donorType();
 	}
 	if (name === "group-by-money-source")
@@ -90,7 +90,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-	        onclick="audio.play()";
+	        onclick=audio.play();
 		return fundsType();
 	}
 
