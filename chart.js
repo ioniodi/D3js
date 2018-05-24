@@ -23,6 +23,20 @@ var entityCentres = {
 
 var fill = d3.scale.ordinal().range(["#8830fd", "#2ae05e", "#e88300"]);
 
+//added sound on click function
+var audio = new Audio("manos5545/D3js-uk-political-donations/Click Sound" ) ;
+
+audio.oncanplaythrough = function(){
+audio.play();
+}
+
+audio.loop = true;
+
+audio.onended = function(){
+audio.play();
+}
+//end of sound function
+
 var svgCentre = { 
     x: w / 3.6, y: h / 2
   };
@@ -48,6 +62,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		onclick="audio.play()";
 		return total();
 		//location.reload();
 	}
@@ -57,6 +72,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
+		onclick="audio.play()";
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -65,6 +81,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
+		onclick="audio.play()";
 		return donorType();
 	}
 	if (name === "group-by-money-source")
@@ -73,6 +90,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
+	        onclick="audio.play()";
 		return fundsType();
 	}
 
