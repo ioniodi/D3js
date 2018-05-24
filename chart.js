@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#8830fd", "#2ae05e", "#e88300"]);
+var fill = d3.scale.ordinal().range(["#b3abbc", "#2ae05e", "#c900e8"]);
 
 //added sound on click function
 var audio = new Audio("manos5545/D3js-uk-political-donations/Click Sound" ) ;
