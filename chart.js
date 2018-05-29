@@ -23,16 +23,9 @@ var entityCentres = {
 
 var fill = d3.scale.ordinal().range(["#b3abbc", "#2ae05e", "#c900e8"]);
 
-//added sound on click function
-<audio id="audio" src="https://github.com/manos5545/D3js-uk-political-donations/blob/master/Click%20Sound.mp3" autostart="false" ></audio>
-    <a onclick="playSound();"> Play</a>
-    <script>
-    function playSound() {
-          var sound = document.getElementById("audio");
-          sound.play();
-      }
-    </script>
-//end of sound function
+
+var audio = new Audio('https://github.com/manos5545/D3js-uk-political-donations/blob/master/Click%20Sound.mp3'); // define audio
+
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -59,7 +52,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		playSound();
+		$('.btn').click( audio.play ); 
 		return total();
 		//location.reload();
 	}
@@ -69,7 +62,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
-		playSound();
+		$('.btn').click( audio.play ); 
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -78,7 +71,7 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
-		playSound();
+		$('.btn').click( audio.play ); 
 		return donorType();
 	}
 	if (name === "group-by-money-source")
@@ -87,7 +80,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-	        playSound();
+	        $('.btn').click( audio.play ); 
 		return fundsType();
 	}
 
