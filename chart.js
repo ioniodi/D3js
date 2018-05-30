@@ -84,6 +84,15 @@ function transition(name) {
 	        audio.play();
 		return fundsType();
 	}
+	if (name === "something")
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeIn(1000);
+	        audio.play();
+		return fundsType();
+	}
 
 function start() {
 
