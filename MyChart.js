@@ -24,7 +24,7 @@ var entityCentres = {
 var fill = d3.scale.ordinal().range(["#b3abbc", "#2ae05e", "#c900e8"]);
 
 // define audio
-var audio = new Audio('https://github.com/manos5545/D3js-uk-political-donations/blob/master/Click%20Sound.mp3'); 
+var audio = new Audio('Click%20Sound.mp3'); 
 
 
 
