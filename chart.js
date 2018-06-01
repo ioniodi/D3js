@@ -23,10 +23,6 @@ var entityCentres = {
 
 var fill = d3.scale.ordinal().range(["#b3abbc", "#2ae05e", "#c900e8"]);
 
-// define audio
-var audio = new Audio('Click%20Sound.mp3'); 
-
-
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -53,7 +49,6 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
-		audio.play();
 		return total();
 		//location.reload();
 	}
@@ -63,7 +58,6 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
-		audio.play();
 		return partyGroup();
 	}
 	if (name === "group-by-donor-type") {
@@ -72,7 +66,6 @@ function transition(name) {
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
-		audio.play();
 		return donorType();
 	}
 	if (name === "group-by-money-source")
@@ -81,16 +74,6 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
-	        audio.play();
-		return fundsType();
-	}
-	if (name === "something")
-		$("#initial-content").fadeOut(250);
-		$("#value-scale").fadeOut(250);
-		$("#view-donor-type").fadeOut(250);
-		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeIn(1000);
-	        audio.play();
 		return fundsType();
 	}
 
