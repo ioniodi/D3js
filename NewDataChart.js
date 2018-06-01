@@ -381,6 +381,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/.csv", display);
+    return d3.csv("Insurance.csv", display);
 
 });
