@@ -1,5 +1,5 @@
 // GLOBALS
-var w = 1000,h = 900;
+var w = 1100,h = 1000; // εχω προσθέσει μερικά pixel
 var padding = 2;
 var nodes = [];
 var force, node, data, maxVal;
@@ -21,7 +21,8 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+
+var fill = d3.scale.ordinal().range(["#31A000", "#6C0000", "#000678"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -48,6 +49,7 @@ function transition(name) {
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#amount-of-donation").fadeOut(250);
 		return total();
 		//location.reload();
 	}
@@ -56,6 +58,7 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
+		$("#amount-of-donation").fadeOut(250);
 		$("#view-party-type").fadeIn(1000);
 		return partyGroup();
 	}
@@ -64,17 +67,32 @@ function transition(name) {
 		$("#value-scale").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
+		$("#amount-of-donation").fadeOut(250);
 		$("#view-donor-type").fadeIn(1000);
 		return donorType();
 	}
-	if (name === "group-by-money-source")
+	if (name === "group-by-money-source") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
+		$("#amount-of-donation").fadeOut(250);
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
+	////Κατηγοριοποίηση με βάση το ποσό της δωρεάς
+	if (name === "group-by-amount") {
+		$("#initial-content").fadeOut(250);
+		$("#initial-content-pie").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#amount-of-donation").fadeIn(1000);
+		return GroupoByAmount();
+	}
+}
+
 
 function start() {
 
@@ -92,7 +110,8 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
-		.on("mouseout", mouseout);
+		.on("mouseout", mouseout)
+		.on("click", googlesearch);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -102,18 +121,26 @@ function start() {
 			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
 			.on("tick", all)
 			.start();
-
+  
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
 }
 
 function total() {
-
 	force.gravity(0)
 		.friction(0.9)
 		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.8; })
 		.on("tick", all)
+		.start();
+}
+
+//Κατηγοριοποίηση με βάση το ποσό της δωρεάς
+function GroupoByAmount() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", amounts)
 		.start();
 }
 
@@ -166,10 +193,16 @@ function types(e) {
 
 function all(e) {
 	node.each(moveToCentre(e.alpha))
-		.each(collide(0.001));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
+}
+
+function amounts(e) {
+	node.each(moveToAmounts(e.alpha))
+		.each(collide(0.001));
+	node.attr("cx", function(d) { return d.x; })
+		.attr("cy", function(d) {return d.y; });
 }
 
 
@@ -238,6 +271,29 @@ function moveToFunds(alpha) {
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+//Κατηγοριοποίηση με βάση το ποσό της δωρεάς
+function moveToAmounts(alpha) {
+	return function(d) {
+		var centreY = svgCentre.y;
+		if (d.value <= 100000) {
+				centreX = svgCentre.x +70;
+				centreY = svgCentre.y -70;
+		} else if (d.value <= 500000) {
+				centreX = svgCentre.x +450;
+				centreY = svgCentre.y -70;
+		} else if (d.value <= 1000000) {
+				centreX = svgCentre.x +70;
+				centreY = svgCentre.y +250;
+		} else {
+				centreX = svgCentre.x +500; 
+				centreY = svgCentre.y +250;
+		}
+		
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;	
 	};
 }
 
@@ -315,6 +371,8 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
+	//Ξεκινάει να λέει την ονομασία του δωρητη και το ποσό της δωρεάς
+	responsiveVoice.speak(donor + ".  " + amount + "pounds", "UK English Male");
 	
 
 
@@ -349,6 +407,8 @@ function mouseover(d, i) {
 	}
 
 function mouseout() {
+	//Σταματάει τη φωνή που λέει την ονομασία του δωρητη και το ποσό της δωρεάς
+	responsiveVoice.cancel();
 	// no more tooltips
 		var mosie = d3.select(this);
 
@@ -357,6 +417,12 @@ function mouseout() {
 		d3.select(".tooltip")
 			.style("display", "none");
 		}
+
+//Νέο παράθυρο με τα αποτελέσματα αναζήτησης του δωρητή.
+function googlesearch(d, i){
+	var donor2 = d.donor;
+	window.open('https://www.google.com/search?q=' + donor2, '_blank');	
+}
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
@@ -367,4 +433,8 @@ $(document).ready(function() {
 
 });
 
-
+//Χρηση του lettering.js για τη δγμιουργία του εφέ του μεγενθυντικού φακού
+$("a, p, h1, h2, h3, h4, h5, strong").lettering('words');
+$('a, p, h1, h2, h3, h4, h5, strong').mouseover(function(event) {
+    var word=event.target.innerHTML;
+});
