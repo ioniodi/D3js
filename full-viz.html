@@ -49,6 +49,8 @@
             </li>
             <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type" onclick="document.getElementById('audioElement').play()">Split by type of donor</a>
             </li>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-amount" onclick="document.getElementById('audioElement').play()">Split by amount </a>
+            </li>
         </ul></div>
     </nav>
 
@@ -199,6 +201,55 @@
                         </p>
             </div>
         </div>
+        
+        <div id="view-amount-type">
+            <div id="TenMillion" class="magnifiable_width">
+                <h5> Amount > &#163; 10 Million</h5>
+				<strong>Count: 2</strong></br>
+                <strong>Total: &#163; 31,548,281
+                    </strong>
+                        <p>Proportion of all donations:
+                            <strong>27%</strong>
+                        </p>
+            </div>
+            <div id="Million" class="magnifiable_width">
+                <h5> &#163; 1M < Amount < &#163; 10M </h5>
+				<strong>Count: 13</strong></br>
+                <strong>Total: &#163; 32,804,492
+                    </strong>
+                        <p>Proportion of all donations:
+                            <strong>28%</strong>
+                        </p>
+            </div>
+            <div id="halfMillion" class="magnifiable_width">
+                <h5> &#163; 500K < Amount < &#163; 1M </h5>
+				<strong>Count: 16</strong></br>
+                <strong>Total: &#163; 10,996,813
+                    </strong>
+                        <p>Proportion of all donations:
+                            <strong>9%</strong>
+                        </p>
+            </div>
+            <div id="hundredK" class="magnifiable_width">
+                <h5> &#163; 100K < Amount > &#163; 500K </h5>
+				<strong>Count: 122</strong></br>
+                <strong>Total: &#163; 22,164,252
+                    </strong>
+                        <p>Proportion of all donations:
+                            <strong>20%</strong>
+                        </p>
+            </div>
+            <div id="lessHundred" class="magnifiable_width">
+                <h5> &#163; 7.5K< Amount < &#163; 100K</h5>
+				<strong>Count: 690</strong></br>
+                <strong>Total: &#163; 18,817,724
+                    </strong>
+                        <p>Proportion of all donations:
+                            <strong>16%</strong>
+                        </p>
+            </div>
+        </div>
+
     </div>
     <div id="chart"></div>
 
