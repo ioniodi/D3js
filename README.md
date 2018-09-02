@@ -101,42 +101,21 @@ onclick="document.getElementById('audioElement').play()"
 	
 ```function magnify(t,s) {
 	d3.selectAll(t).style('text-anchor', 'middle')
-	
 		.on('mouseover', function(d,i) {
-		
-			d3.select(this).style('font-size', (s+10)+'px')
-			
-		})
-		
+			d3.select(this).style('font-size', (s+10)+'px')	})
 		.on('mouseout', function(d,i) {
-		
-			d3.select(this).style('font-size', s+'px')
-			
-		});
-		
+			d3.select(this).style('font-size', s+'px') });	
 }
 ```
 	
 ```function magnify_Width(t,s) {
-
 	d3.selectAll(t).style('text-anchor', 'middle')
-	
 		.on('mouseover', function(d,i) {
-		
 			d3.select(this).style('font-size', (s+10)+'px')
-			
-			d3.select(this).style('width', '170%')
-			
-		})
-		
+			d3.select(this).style('width', '170%')	})
 		.on('mouseout', function(d,i) {
-		
 			d3.select(this).style('font-size', s+'px')
-			
-			d3.select(this).style('width', '100%')
-			
-		});
-		
+			d3.select(this).style('width', '100%')	});
 }
 ```
 
