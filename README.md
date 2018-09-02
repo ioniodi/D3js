@@ -69,8 +69,11 @@ onclick="document.getElementById('audioElement').play()"
 - [X]	 Τροποποιήστε τον κώδικα έτσι ώστε όταν κάνετε κλικ σε κάθε μπάλα να ανοίγει ένα νέο παράθυρο με τα αποτελέσματα της αναζήτησης στο google για τον αντίστοιχο δωρητή.
 
 •	Στο αρχείο chart.js, Γραμμή 95 , προσθήκη:
+
 .on("click", mouseclick)
+
 •	Και στη Γραμμή 351, προσθήκη:
+
 function mouseclick(d, i) {
 	// tooltip new_tab
 	var mosie = d3.select(this);
@@ -87,34 +90,34 @@ div.magnifiable_width:hover { font-size: 150%; width: 170%}
 Και στον html κώδικα προσδιορισμός της επιθυμητής κλάσης σε κάθε div. Π.χ.
 ```<div id="f" class="magnifiable">```
 Αν κάποιο στοιχείο κειμένου δεν βρίσκεται μέσα σε div το συμπεριλαμβάνουμε σε ένα. Π.χ.
-```<div class="magnifiable">
-        <h1>Who's funding the big three?</h1> </div>```
+```<div class="magnifiable">```
+        ```<h1>Who's funding the big three?</h1> </div>```
 
 Η δεύτερη κλάση (magnifiable_width) είναι μια εναλλακτική της πρώτης όπου αυξάνει (κατά 170%) και το πλάτος της οντότητας. Χρησιμοποιήθηκε σε περιπτώσεις μεγάλου κειμένου όπου η μεγέθυνση αύξανε κατά πολύ τις γραμμές του κειμένου και επικάλυπτε οντότητες που βρίσκονται πιο κάτω στην σελίδα
 
 
 ΕΝΑΛΛΑΚΤΙΚΑ, ΜΕ ΧΡΗΣΗ της D3:
-Προσθήκη των παρακάτω συναρτήσεων στο <head> <script> του full-viz.html:
-function magnify(t,s) {
-		d3.selectAll(t).style('text-anchor', 'middle')
-			.on('mouseover', function(d,i) {
-				d3.select(this).style('font-size', (s+10)+'px')
-			})
-			.on('mouseout', function(d,i) {
-				d3.select(this).style('font-size', s+'px')
-			});
-		}
-	function magnify_Width(t,s) {
-		d3.selectAll(t).style('text-anchor', 'middle')
-			.on('mouseover', function(d,i) {
-				d3.select(this).style('font-size', (s+10)+'px')
-				d3.select(this).style('width', '170%')
-			})
-			.on('mouseout', function(d,i) {
-				d3.select(this).style('font-size', s+'px')
-				d3.select(this).style('width', '100%')
-			});
-		} 
+Προσθήκη των παρακάτω συναρτήσεων στο ```<head> <script>``` του full-viz.html:
+``` javascritp function magnify(t,s) {
+	d3.selectAll(t).style('text-anchor', 'middle')
+		.on('mouseover', function(d,i) {
+			d3.select(this).style('font-size', (s+10)+'px')
+		})
+		.on('mouseout', function(d,i) {
+			d3.select(this).style('font-size', s+'px')
+		});
+	}
+function magnify_Width(t,s) {
+	d3.selectAll(t).style('text-anchor', 'middle')
+		.on('mouseover', function(d,i) {
+			d3.select(this).style('font-size', (s+10)+'px')
+			d3.select(this).style('width', '170%')
+		})
+		.on('mouseout', function(d,i) {
+			d3.select(this).style('font-size', s+'px')
+			d3.select(this).style('width', '100%')
+		});
+}```
 
 Το πρώτο όρισμα δηλώνει σε ποια οντότητα της html θέλουμε να γίνει η μεγέθυνση και το 2ο σε ποιο μέγεθος κειμένου θέλουμε να επανέλθει (άρα το αρχικό μέγεθος του στοιχείου που μεγεθύνουμε). Η μεγέθυνση γίνεται κατά 10px μεγαλύτερη γραμματοσειρά.
 Η δεύτερη συνάρτηση είναι μια εναλλακτική της πρώτης όπου αυξάνει (κατά 170%) και το πλάτος της οντότητας. Χρησιμοποιήθηκε σε περιπτώσεις όπου η μεγέθυνση αύξανε κατά πολύ τις γραμμές του κειμένου και επικάλυπτε οντότητες που βρίσκονται πιο κάτω στην σελίδα.
