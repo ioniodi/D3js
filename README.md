@@ -1,4 +1,4 @@
-# Οπτικοποίηση δεδομένων χορηγιών (UK)
+# Οπτικοποίηση δεδομένων χορηγιών (U K)
 
 Πηγή: [https://github.com/neilhawkins/d3-uk-political-donations](https://github.com/neilhawkins/d3-uk-political-donations)
 
