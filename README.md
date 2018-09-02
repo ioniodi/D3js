@@ -98,25 +98,45 @@ div.magnifiable_width:hover { font-size: 150%; width: 170%}
 
 ΕΝΑΛΛΑΚΤΙΚΑ, ΜΕ ΧΡΗΣΗ της D3:
 Προσθήκη των παρακάτω συναρτήσεων στο ```<head>``` <script> του full-viz.html:
+	
 function magnify(t,s) {
+
 	d3.selectAll(t).style('text-anchor', 'middle')
+	
 		.on('mouseover', function(d,i) {
+		
 			d3.select(this).style('font-size', (s+10)+'px')
+			
 		})
+		
 		.on('mouseout', function(d,i) {
+		
 			d3.select(this).style('font-size', s+'px')
+			
 		});
+		
 	}
+	
 function magnify_Width(t,s) {
+
 	d3.selectAll(t).style('text-anchor', 'middle')
+	
 		.on('mouseover', function(d,i) {
+		
 			d3.select(this).style('font-size', (s+10)+'px')
+			
 			d3.select(this).style('width', '170%')
+			
 		})
+		
 		.on('mouseout', function(d,i) {
+		
 			d3.select(this).style('font-size', s+'px')
+			
 			d3.select(this).style('width', '100%')
+			
 		});
+		
 }
 
 Το πρώτο όρισμα δηλώνει σε ποια οντότητα της html θέλουμε να γίνει η μεγέθυνση και το 2ο σε ποιο μέγεθος κειμένου θέλουμε να επανέλθει (άρα το αρχικό μέγεθος του στοιχείου που μεγεθύνουμε). Η μεγέθυνση γίνεται κατά 10px μεγαλύτερη γραμματοσειρά.
