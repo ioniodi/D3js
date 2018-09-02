@@ -9,6 +9,13 @@
 
 Παραδοτέο1:
 
+Παραδοτέο1: λινκ στο αποθετήριο του κώδικα: https://github.com/p13dima/D3js-uk-political-donations
+
+λινκ στο κλαδί του κώδικα που αντιστοιχεί στο παραδοτέο: https://github.com/p13dima/D3js-uk-political-donations/tree/2013029-Paradoteo1
+
+λινκ στο εκτελέσιμο: https://p13dima.github.io/D3js-uk-political-donations/full-viz
+
+
 - [X]  Ο σύνδεσμος της σελίδας σας με την εφαρμογή.
 
 - [ ]	 Εφαρμόστε τις κατάλληλες αλλαγές έτσι ώστε το url της εφαρμογής σας να μην χρειάζεται να καταλήγει σε "full-viz.html" (π.χ. από Mitsos.github.io/D3js-uk-political-donations/full-viz.html σε Mitsos.github.io/D3js-uk-political-donations/).
