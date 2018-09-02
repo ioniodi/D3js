@@ -9,7 +9,7 @@
 
 Παραδοτέο1:
 
-Παραδοτέο1: λινκ στο αποθετήριο του κώδικα: https://github.com/p13dima/D3js-uk-political-donations
+λινκ στο αποθετήριο του κώδικα: https://github.com/p13dima/D3js-uk-political-donations
 
 λινκ στο κλαδί του κώδικα που αντιστοιχεί στο παραδοτέο: https://github.com/p13dima/D3js-uk-political-donations/tree/2013029-Paradoteo1
 
