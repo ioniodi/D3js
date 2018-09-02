@@ -346,7 +346,11 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
+	var msg = new SpeechSynthesisUtterance(donor);
+	window.speechSynthesis.speak(msg);
+	var msg = new SpeechSynthesisUtterance(comma(amount)+"pounds");
+	window.speechSynthesis.speak(msg);
+
 	}
 function mouseclick(d, i) {
 	// tooltip new_tab
