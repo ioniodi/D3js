@@ -34,19 +34,19 @@
 <!-- Add feature detection and noscript -->
 
 <body>
-
+ <audio id="audioElement" src="click.wav"></audio>
     <header role="banner" id="title">
         <h1>Who's funding the big three?</h1>
     </header>
     <nav role="navigation">
         <ul>
-            <li><a href="#" role="button" class="pure-button switch" id="all-donations">All money</a>
+            <li><a href="#" role="button" class="pure-button switch" id="all-donations" onclick="document.getElementById('audioElement').play()">All money</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source">The public's purse</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-money-source" onclick="document.getElementById('audioElement').play()">The public's purse</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-party">Split by party</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-party" onclick="document.getElementById('audioElement').play()">Split by party</a>
             </li>
-            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type">Split by type of donor</a>
+            <li><a href="#" role="button" class="pure-button switch" id="group-by-donor-type" onclick="document.getElementById('audioElement').play()">Split by type of donor</a>
             </li>
         </ul>
     </nav>
