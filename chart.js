@@ -92,6 +92,7 @@ function start() {
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
+		.on("click", mouseclick)
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -347,6 +348,12 @@ function mouseover(d, i) {
 	
 	
 	}
+function mouseclick(d, i) {
+	// tooltip new_tab
+	var mosie = d3.select(this);
+	var donor = d.donor;
+	window.open('https://www.google.gr/search?safe=active&q='+ donor, '_blank');
+}
 
 function mouseout() {
 	// no more tooltips
