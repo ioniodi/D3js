@@ -2841,10 +2841,61 @@ anime.timeline({loop: true})
   <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
   <!-- >>>>>>>>>>>>>>>>>>>>>>> Position #058 starting... >>>>>>>>>>>>>>>>>>>>>>> -->
   <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-  <div style="width: fit-content; float: left; margin: 10px 10px 10px 10px;">
-        <p>&nbsp;Position #058&nbsp;</p>
-        <p>&nbsp;Put your content!&nbsp;</p>
+ 
+<div style="border: 2px solid; border-radius: 5px; width: fit-content; float: left; margin: 10px 10px 10px 10px;">
+        
+      <h4>
+        <img src="https://avatars0.githubusercontent.com/u/22666247?s=40&v=4" height="42" width="42">  
+        <span class="ml206"><span class="letters">&nbsp; Nikikpt &nbsp;</span></span>
+      </h4>
   </div>
+ 
+    
+  <script>
+  // Wrap every letter in a span
+$('.ml206').each(function(){
+  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml206 .letter',
+    translateY: [50,0],
+    translateZ: 0,
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 1400,
+    delay: function(el, i) {
+      return 1000 + (i + 1);
+    }
+  }).add({
+    targets: '.ml206 .letter',
+    translateY: [0,-40],
+    opacity: [1,0],
+    easing: "easeInExpo",
+    duration: 1100,
+    delay: function(el, i) {
+      return 100 + 30 * i;
+    }
+  });
+  </script> 
+
+ <style> 
+  .ml206 {
+  position: absolute;
+  font-weight: 600;
+  font-size: 0.9em;
+	 }
+	 
+  #display{
+background-color:#00ffff;
+text-transform: uppercase;
+	 }
+	 
+  .ml206 .letter {
+ display: inline block;
+ line-height: 1em;
+	 }
+
   <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
   <!-- <<<<<<<<<<<<<<<<<<<<<<< ...Position #058 ending <<<<<<<<<<<<<<<<<<<<<<< -->
   <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
